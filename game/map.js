@@ -138,8 +138,8 @@ let story = new Image();
 story.src = "../images/storyCastle.jpeg";
 
 // INSTANCES OF CLASSES
-let newSkeleton = new Character( 'Skeleton', character, 12, 100 , canvas.width / 1.7, canvas.height / 10, 50, 260);
-let newWarrior = new Character( 'Warrior', character, 12, 100 , 0, canvas.height / 1.6, 0, 0);
+let newSkeleton = new Character( 'Skeleton', character, 12, 100 , canvas.width / 3.5, canvas.height / 9, 50, 260);
+let newWarrior = new Character( 'Warrior', character, 12, 100 , 0, canvas.height / 1.55, 0, 0);
 
 /* ============================ ANIMATION ================================= */
 
@@ -149,10 +149,9 @@ let currentPos = defaultPos;
 
 // BEGGINING OF THE GAME (STORY)
 story.onload = function() {
-  ctx.drawImage(story, 0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "black";
   ctx.font = "50px serif";
-  ctx.fillText("GOOD LUCK! PRESS ENTER", canvas.width / 6, canvas.height / 2, canvas.width / 1.3);
+  ctx.fillText("GOOD LUCK!", canvas.width / 6, canvas.height / 2, canvas.width / 1.3);
 };
 
 function animate() {

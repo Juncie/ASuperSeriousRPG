@@ -15,7 +15,7 @@ story.onload = function() {
     ctx.drawImage(story, 0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "white";
     ctx.font = "50px serif";
-    ctx.fillText("This time you will be the hero they need... or not", canvas.width / 6, canvas.height / 2, canvas.width / 1.3);
+    ctx.fillText("This time you will be the hero they need... or not.", canvas.width / 6, canvas.height / 2, canvas.width / 1.3);
 };
 
 window.onkeydown = function (e) {
