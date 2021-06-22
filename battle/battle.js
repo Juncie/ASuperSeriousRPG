@@ -190,23 +190,27 @@ let finalBoss = new FinalBoss('Final Boss', 25, 14, 60, 3, 2);
 let grunt = new Grunt('Grunt', 12, 5, 30, 1, 3);
 let dragon = new Dragon('Dragon', 9, 10, 30, 2, 2);
 //let iceWoman = new IceWoman('Ice Woman', 5, 12, 25, 1 ,2);
+
 function fight (hero,enemy) {
   let round = 0;
 //   while (hero.health > 0 && enemy.health > 0) {
     document.addEventListener('keyup',doFight());
-    function doFight(event){
+
+    function doFight() {
+
         console.log(round);
-        let playerChoice = event.key;
-        if (playerChoice == 'd' && hero.defenseCooldownCounter > round){
-            console.log('Cannot use defense because there is a cooldown');
-            return;
-        } else if (playerChoice == 's' && hero.spellCooldownCounter > round){
-            console.log('Cannot use spell because there is a cooldown');
-            return;
-        } else if (playerChoice !== 's' && playerChoice !== 'd' && playerChoice !== 'a'){
-            console.log('Invalid input, please only use a, s, d');
-            return;
-        }
+
+        let playerChoice = clicked;
+        // if (playerChoice == 'd' && hero.defenseCooldownCounter > round){
+        //     console.log('Cannot use defense because there is a cooldown');
+        //     return;
+        // } else if (playerChoice == 's' && hero.spellCooldownCounter > round){
+        //     console.log('Cannot use spell because there is a cooldown');
+        //     return;
+        // } else if (playerChoice !== 's' && playerChoice !== 'd' && playerChoice !== 'a'){
+        //     console.log('Invalid input, please only use a, s, d');
+        //     return;
+        // }
         switch(playerChoice){
         case 'a':
             console.log(hero.physicalAttack(enemy));
