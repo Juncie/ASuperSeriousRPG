@@ -197,10 +197,10 @@ let currentPos = defaultPos;
 
 // BEGGINING OF THE GAME (STORY)
 story.onload = function() {
-  ctx.drawImage(story, 0, 0, canvas.width, canvas.height);
+  // ctx.drawImage(story, 0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "white";
   ctx.font = "50px serif";
-  ctx.fillText("The enemy is inside the cave! Go defeat him and only then everyone will live in peace", canvas.width / 6, canvas.height / 2, canvas.width / 1.3);
+  ctx.fillText("GOOD LUCK! PRESS ENTER", canvas.width / 6, canvas.height / 2, canvas.width / 1.3);
 };
 
 function animate() {
