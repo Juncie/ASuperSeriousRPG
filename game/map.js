@@ -189,7 +189,7 @@ window.onkeydown = function (e) {
       currentPos += 1;
       if ((currentPos === 210 || currentPos === 211 )
         || (currentPos === 178 || currentPos === 179)) {
-          window.location.href = "../battle/battle.html";
+          window.location.href = "../Assets/Maps/Cave/cave.html";
 
       }
       console.log(currentPos);
