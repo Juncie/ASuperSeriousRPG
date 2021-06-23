@@ -14,7 +14,7 @@ ground.onload = draw;
 
 
 const tileSize = 16;
-const tileOutputSize = 1.5;
+const tileOutputSize = 1;
 const updatedTileSize = tileSize * tileOutputSize;
 
 const tileCol = 32;
@@ -97,7 +97,6 @@ const layerOneMap = [
 //     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 //     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 //     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
 
 
 
