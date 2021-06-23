@@ -50,11 +50,12 @@ ul > li {
     padding-right: 10%;
 }
 
-#villain-front {
+#villain {
     height: 60%;
     width: 20%;
     position: relative;
-    left: 25em
+    left: 25em;
+    position: fixed
 }
 
 .battle-imgs {

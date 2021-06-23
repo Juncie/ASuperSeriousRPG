@@ -5,11 +5,7 @@ canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 const ground = new Image ();
-<<<<<<< HEAD:Assets/Maps/Boss Room/bossRoom.js
-ground.src = '../../tilesets/Cave.png'
-=======
 ground.src = '../../tileSets/Cave.png'
->>>>>>> e50fd5611cdeafe6a656ba411e1290a3644b4dea:Assets/Maps/Boss Room/Boss.js
 ground.onload = draw;
 
 const boss = new Image();
@@ -117,6 +113,7 @@ let currentPos = defaultPos;
 
  window.onkeydown = function (e) {
    console.log(e.key);
+   console.log(currentPos);
  
    
    // MOVEMENT OF THE MAIN CHARACTER
@@ -125,29 +122,28 @@ let currentPos = defaultPos;
        newChar.x -= tileSize;
        currentPos -= 1;
      }
-     console.log(currentPos);
    }
    if (e.key === "ArrowRight") {
      if (layerOneMap[currentPos + 1] === 61) {
        newChar.x += tileSize; 
        currentPos += 1;
-       console.log(layerOneMap[currentPos + 1]);
+      //  console.log(layerOneMap[currentPos + 1]);
        // console.log(MAP.tiles[currentPos + 1]);
      }
-     console.log(layerOneMap[currentPos + 1]);
+    //  console.log(layerOneMap[currentPos + 1]);
    }
    if (e.key === "ArrowUp") {
      if (layerOneMap[currentPos - tileSize] === 61) {
        newChar.y -= tileSize;
        currentPos -= tileSize;
      }
-     console.log(layerOneMap[currentPos + 1]);
+    //  console.log(layerOneMap[currentPos + 1]);
    }
    if (e.key === "ArrowDown") {
      if (layerOneMap[currentPos + tileSize] === 61) {
        newChar.y += tileSize;
        currentPos += tileSize;
      }
-     console.log(layerOneMap[currentPos + 1]);
+    //  console.log(layerOneMap[currentPos + 1]);
    }
  };
