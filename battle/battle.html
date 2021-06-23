@@ -7,33 +7,33 @@
     <title>Document</title>
     <link rel="stylesheet" href="./battle.css">
 </head>
-
 <body>
 <header>
     <!-- <img class="logo" title="Reset Game" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2000px-International_Pok%C3%A9mon_logo.svg.png" alt="Pokemon"> -->
   </header>
-  
   <main>
     <div class="instructions">
       <p>TIME TO FIGHT</p>
     </div>
-    
     <section class="background">
       <section class="enemy"></section>
       <section class="hero">
       </section>
     </section>
     <div class="battle-imgs">
-        <img id="villain-front" src="../Assets/emenies/Lich.png" alt="villain front" />
+      <img id="villain-front" src="../Assets/emenies/Lich.png" alt="villain front" />
     </div>
-    
+    <ul class="attack-list">
+        <li>Attack</li>
+        <li>Spell</li>
+        <li>Defense</li>
+    </ul>
+        <!-- <img id="villain-front" src="../Assets/Enemies/Lich.png" alt="villain front" /> -->
   </main>
-  
   <div class="audio">
     <audio class="sfx"></audio>
     <audio class="music" loop></audio>
   </div>
-  
   <div class="modal-out">
     <div class="modal-in">
       <header></header>
@@ -41,16 +41,5 @@
       <footer></footer>
     </div>
   </div>
-  <ul class="attack-list">
-    <ul>
-        <li>Attack</li>
-        <li>Spell</li>
-    </ul>
-    <ul>
-        <li>Defense</li>
-        <li>Physical</li>
-    </ul>
-</ul>
-</body>
-<script src="battle.js"></script>
+  <script src='./battle.js'></script>
 </html>

@@ -1,3 +1,10 @@
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
 body {
     display: flex;
     align-items: center;
@@ -10,8 +17,9 @@ body {
 }
 
 canvas {
-    padding-left: 53%;
+    padding-left: 100%;
     justify-content: center;
-    height: 117.5vh;
-    width:93vw
+    height: 175.5vh;
+    width:140vw
 }
+

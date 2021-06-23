@@ -128,7 +128,7 @@ function draw () {
    }
  
    draw = () => {
-       ctx.drawImage(this.img, this.sx, this.sy, 70, 65, this.x, this.y, canvas.width/ 13, canvas.height/ 13);
+       ctx.drawImage(this.img, this.sx, this.sy, 70, 65, this.x, this.y, canvas.width/ 28, canvas.height/ 20);
    }
  }
 
@@ -159,7 +159,9 @@ let dragon = new Image();
 dragon.src = "../../emenies/Bone_Dragon.png";
 
 // INSTANCES OF CLASSES
-let newWarrior = new Character( 'Warrior', character, canvas.height / 2, 100 , canvas.width / 5.5, canvas.height / 1.45, 0, 0);
+let newWarrior = new Character( 'Warrior', character, canvas.height / 2, 100 , canvas.width / 7.5, canvas.height / 2.2, 0, 0);
+
+console.log(newWarrior.x);
 
 let defaultPos = 1011;
 let currentPos = defaultPos;
@@ -171,7 +173,7 @@ function animate() {
    draw();
    console.log("animate");
    newWarrior.draw();
-   ctx.drawImage(dragon, canvas.width / 7, canvas.height / 4, 250, 150)
+   ctx.drawImage(dragon, canvas.width / 13, canvas.height / 7, 250, 150)
 }
 
 window.onload = animate;
@@ -182,30 +184,30 @@ window.onkeydown = function (e) {
    // MOVEMENT OF THE MAIN CHARACTER
    if (e.key === "ArrowLeft") {
      if (layerOneMap[currentPos - 1] === 452) {
-       newWarrior.x -= 23;
+       newWarrior.x -= 16;
        currentPos -= 1;
      }
    }
    if (e.key === "ArrowRight") {
      if (layerOneMap[currentPos + 1] === 452) {
-       newWarrior.x += 23;
+       newWarrior.x += 16;
        currentPos += 1;
      }
    }
    if (e.key === "ArrowUp") {
      if (layerOneMap[currentPos - 32] === 452) {
-       newWarrior.y -= 23;
+       newWarrior.y -= 16;
        currentPos -= 32;
      }   
    }
    if (e.key === "ArrowDown") {
      if (layerOneMap[currentPos + 32] === 452) {
-       newWarrior.y += 23;
+       newWarrior.y += 16;
        currentPos += 32;
      }
    }
    console.log(currentPos)
-   if (currentPos <= 512) {
+   if (currentPos <= 600) {
       window.location.href = "../Boss Room/Boss.html";
    } 
 };
