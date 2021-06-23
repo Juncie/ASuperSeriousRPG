@@ -5,7 +5,11 @@ canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 const ground = new Image ();
+<<<<<<< HEAD:Assets/Maps/Boss Room/bossRoom.js
 ground.src = '../../tilesets/Cave.png'
+=======
+ground.src = '../../tileSets/Cave.png'
+>>>>>>> e50fd5611cdeafe6a656ba411e1290a3644b4dea:Assets/Maps/Boss Room/Boss.js
 ground.onload = draw;
 
 const boss = new Image();

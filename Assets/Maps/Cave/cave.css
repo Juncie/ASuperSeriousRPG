@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+>>>>>>> e50fd5611cdeafe6a656ba411e1290a3644b4dea
 body {
     display: flex;
     align-items: center;
@@ -10,8 +20,12 @@ body {
 }
 
 canvas {
-    padding-left: 53%;
+    padding-left: 100%;
     justify-content: center;
-    height: 117.5vh;
-    width:93vw
+    height: 175.5vh;
+    width:140vw
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e50fd5611cdeafe6a656ba411e1290a3644b4dea
