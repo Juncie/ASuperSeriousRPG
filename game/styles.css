@@ -10,7 +10,7 @@ body {
 }
 
 canvas {
-    padding-left: 30%;
+    padding-left: 80vw;
     justify-content: center;
     height: 90vh;
     width: 70vw;

@@ -104,7 +104,7 @@ function draw () {
     for (let col = 0; col < mapHeight; col += tileSize) {
        for (let row = 0; row < mapWidth; row += tileSize) {
           let tileVal = layerOneMap[mapIndex];
-          if(tileVal !=0) {
+          if(tileVal != 0) {
              tileVal -= 1;
              sourceY = Math.floor(tileVal / tileCol) * tileSize;
              sourceX = (tileVal % tileCol) * tileSize;
@@ -149,6 +149,9 @@ function draw () {
    }
  }
  
+// let defaultPos = 1011;
+let defaultPos = 5;
+let currentPos = defaultPos;
 
 // warrior image
 let character = new Image();
@@ -159,12 +162,10 @@ let dragon = new Image();
 dragon.src = "../../emenies/Bone_Dragon.png";
 
 // INSTANCES OF CLASSES
-let newWarrior = new Character( 'Warrior', character, canvas.height / 2, 100 , canvas.width / 7.5, canvas.height / 2.2, 0, 0);
+let newWarrior = new Character( 'Warrior', character, 123, 100 , ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0);
 
 console.log(newWarrior.x);
 
-let defaultPos = 1011;
-let currentPos = defaultPos;
 
 function animate() {
    requestAnimationFrame(animate);
@@ -180,7 +181,7 @@ window.onload = animate;
 
 window.onkeydown = function (e) {
  
-   console.log(e.key);
+   console.log(currentPos)
    // MOVEMENT OF THE MAIN CHARACTER
    if (e.key === "ArrowLeft") {
      if (layerOneMap[currentPos - 1] === 452) {
@@ -207,7 +208,7 @@ window.onkeydown = function (e) {
      }
    }
    console.log(currentPos)
-   if (currentPos <= 600) {
-      window.location.href = "../Boss Room/Boss.html";
-   } 
+   // if (currentPos <= 600) {
+   //    window.location.href = "../Boss Room/Boss.html";
+   // } 
 };
