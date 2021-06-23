@@ -1,0 +1,31 @@
+* {
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  
+  }
+  
+  html { height:100%; width:100%; }
+  
+  body {
+  
+    align-content:space-around;
+    align-items:center;
+    background-color:#000000;
+    color:#ffffff;
+    display:grid;
+    grid-template-columns:auto;
+    grid-template-rows:auto auto;
+    justify-items:center;
+    min-height:100%;
+    width:100%;
+
+  }
+  
+  h1 {
+  
+    font-size:3.0em;
+    text-align:center;
+  
+  }
