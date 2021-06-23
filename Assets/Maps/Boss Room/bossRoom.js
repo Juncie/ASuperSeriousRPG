@@ -5,8 +5,34 @@ canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 const ground = new Image ();
+<<<<<<< HEAD:Assets/Maps/Boss Room/bossRoom.js
+ground.src = '../../tilesets/Cave.png'
+=======
 ground.src = '../../tileSets/Cave.png'
+>>>>>>> e50fd5611cdeafe6a656ba411e1290a3644b4dea:Assets/Maps/Boss Room/Boss.js
 ground.onload = draw;
+
+const boss = new Image();
+boss.src = "../../emenies/Boss.png"
+
+const warr = new Image ();
+warr.src = "../../../images/warrior back.png"
+
+class Character {
+   constructor(img, x, y) {
+       this.img = img;
+       this.x = x,
+       this.y = y
+
+   }
+   
+   draw = () => {
+       ctx.drawImage(this.img, this.x, this.y);
+   }
+ }
+
+const newChar = new Character (warr, 450, 800)
+
 
 const tileSize = 32;
 const tileOutputSize = .9;
@@ -49,7 +75,7 @@ const layerOneMap = [
 79,79,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,79,79,79,
 79,79,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,79,79,79,
 79,79,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,79,79,79,
-79,79,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,79,79,79,
+79,79,61,61,61,61,61,61,61,61,61,61,61,61,61,61,62,61,61,61,61,61,61,61,61,61,61,61,61,79,79,79,
 79,79,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,79,79,79,
 79,79,79,79,79,79,79,79,79,79,79,79,79,79,61,61,61,61,61,79,79,79,79,79,79,79,79,79,79,79,79,79,
 79,79,79,79,79,79,79,79,79,79,79,79,79,79,61,61,61,61,61,79,79,79,79,79,79,79,79,79,79,79,79,79,
@@ -75,3 +101,53 @@ function draw () {
        }
     }
  }
+ 
+ function animate() {
+   requestAnimationFrame(animate);
+   // ctx.drawImage(boss, 200, 0)
+   ctx.clearRect(0,0,canvas.width, canvas.height)
+   newChar.draw() 
+   draw()
+}
+ 
+ animate();
+
+let defaultPos = 530;
+let currentPos = defaultPos;
+
+ window.onkeydown = function (e) {
+   console.log(e.key);
+ 
+   
+   // MOVEMENT OF THE MAIN CHARACTER
+   if (e.key === "ArrowLeft") {
+     if (layerOneMap[currentPos - 1] === 61) {
+       newChar.x -= tileSize;
+       currentPos -= 1;
+     }
+     console.log(currentPos);
+   }
+   if (e.key === "ArrowRight") {
+     if (layerOneMap[currentPos + 1] === 61) {
+       newChar.x += tileSize; 
+       currentPos += 1;
+       console.log(layerOneMap[currentPos + 1]);
+       // console.log(MAP.tiles[currentPos + 1]);
+     }
+     console.log(layerOneMap[currentPos + 1]);
+   }
+   if (e.key === "ArrowUp") {
+     if (layerOneMap[currentPos - tileSize] === 61) {
+       newChar.y -= tileSize;
+       currentPos -= tileSize;
+     }
+     console.log(layerOneMap[currentPos + 1]);
+   }
+   if (e.key === "ArrowDown") {
+     if (layerOneMap[currentPos + tileSize] === 61) {
+       newChar.y += tileSize;
+       currentPos += tileSize;
+     }
+     console.log(layerOneMap[currentPos + 1]);
+   }
+ };
