@@ -5,7 +5,7 @@ canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 const ground = new Image ();
-ground.src = '/images/Cave.png'
+ground.src = '../../tileSets/Cave.png'
 ground.onload = draw;
 
 const tileSize = 32;
