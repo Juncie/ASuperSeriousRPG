@@ -191,6 +191,7 @@ let dragon = new Dragon('Dragon', 9, 10, 30, 2, 2);
 function fight (hero,enemy) {
 let round = 0;
 //   while (hero.health > 0 && enemy.health > 0) {
+<<<<<<< HEAD
   document.querySelectorAll(".attack-list li").forEach(li => 
       li.addEventListener("click", (event) => doFight(event))
   );
@@ -253,3 +254,67 @@ let round = 0;
       } 
 };
 }
+=======
+    document.querySelectorAll(".attack-list li").forEach(li => 
+        li.addEventListener("click", (event) => doFight(event))
+    );
+    // document.querySelectorAll('.attack-list li').addEventListener('click',doFight(event));
+    function doFight(event){
+        if (hero.health<=0 || enemy.health <=0){
+            console.log('Someone has died so will not run anything');
+            return
+        } 
+        console.log(round);
+        let playerChoice = event.target.innerText.slice(0,1).toLowerCase();
+        if (playerChoice == 'd' && hero.defenseCooldownCounter > round){
+            console.log('Cannot use defense because there is a cooldown');
+            return;
+        } else if (playerChoice == 's' && hero.spellCooldownCounter > round){
+            console.log('Cannot use spell because there is a cooldown');
+            return;
+        } else if (playerChoice !== 's' && playerChoice !== 'd' && playerChoice !== 'a'){
+            console.log('Invalid input, please only use a, s, d');
+            return;
+        }
+        switch(playerChoice){
+        case 'a':
+            console.log(hero.physicalAttack(enemy));
+            break;
+        case 's':
+            console.log(hero.spellAttack(enemy,round));
+            break;
+        case 'd':
+            console.log(hero.defense(round));
+            break;
+        }
+        if (enemy.health <= 0){
+            document.removeEventListener('click',doFight);
+            return;
+        }
+        let aiChoice = '';
+        while(true){
+            aiChoice = Math.floor(Math.random()*3);
+            if (aiChoice == 2 && enemy.defenseCooldownCounter > round){
+                continue;
+            } else if (aiChoice == 1 && enemy.spellCooldownCounter > round){
+                continue;
+            } else {break;}
+        }
+        switch(aiChoice){
+            case 0:
+                console.log(enemy.physicalAttack(hero));
+                break;
+            case 1:
+                let response = enemy.spellAttack(hero,round);
+                console.log(response);
+                break;
+            case 2:
+                console.log(enemy.defense(round));
+                break;
+        }
+        if (hero.health>0 && enemy.health >0){
+            round++;
+        } 
+  };
+}
+>>>>>>> 7930061c0979ef3ce3af676133f18e26db8ead90

@@ -9,9 +9,3 @@ body {
     height: 100%;
 }
 
-canvas {
-    padding-left: 30%;
-    justify-content: center;
-    height: 90vh;
-    width: 70vw;
-}
