@@ -1,8 +1,3 @@
-//const canvas = document.querySelector('canvas')
-//canvas.width = window.innerWidth
-//canvas.height = window.innerHeight
-//const ctx = canvas.getContext('2d')
-// CLASSES FOR  CHARACTERS
 class Character {
     constructor(name, strength, spellPower, health, spellCooldown, defenseCooldown) {
         this.name = name,
@@ -31,6 +26,9 @@ class Character {
             this.spellCooldownCounter = round + this.spellCooldown;
             return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength)+1);
         }
+    }
+    draw = () => {
+        ctx.drawImage(this.img, this.sx, this.sy, 70, 65, this.x, this.y, canvas.width/ 13, canvas.height/ 13);
     }
 }
 class Warrior extends Character {
@@ -190,27 +188,30 @@ let finalBoss = new FinalBoss('Final Boss', 25, 14, 60, 3, 2);
 let grunt = new Grunt('Grunt', 12, 5, 30, 1, 3);
 let dragon = new Dragon('Dragon', 9, 10, 30, 2, 2);
 //let iceWoman = new IceWoman('Ice Woman', 5, 12, 25, 1 ,2);
-
 function fight (hero,enemy) {
   let round = 0;
 //   while (hero.health > 0 && enemy.health > 0) {
-    document.addEventListener('keyup',doFight());
-
-    function doFight() {
-
+    document.querySelectorAll(".attack-list li").forEach(li => 
+        li.addEventListener("click", (event) => doFight(event))
+    );
+    // document.querySelectorAll('.attack-list li').addEventListener('click',doFight(event));
+    function doFight(event){
+        if (hero.health<=0 || enemy.health <=0){
+            console.log('Someone has died so will not run anything');
+            return
+        } 
         console.log(round);
-
-        let playerChoice = clicked;
-        // if (playerChoice == 'd' && hero.defenseCooldownCounter > round){
-        //     console.log('Cannot use defense because there is a cooldown');
-        //     return;
-        // } else if (playerChoice == 's' && hero.spellCooldownCounter > round){
-        //     console.log('Cannot use spell because there is a cooldown');
-        //     return;
-        // } else if (playerChoice !== 's' && playerChoice !== 'd' && playerChoice !== 'a'){
-        //     console.log('Invalid input, please only use a, s, d');
-        //     return;
-        // }
+        let playerChoice = event.target.innerText.slice(0,1).toLowerCase();
+        if (playerChoice == 'd' && hero.defenseCooldownCounter > round){
+            console.log('Cannot use defense because there is a cooldown');
+            return;
+        } else if (playerChoice == 's' && hero.spellCooldownCounter > round){
+            console.log('Cannot use spell because there is a cooldown');
+            return;
+        } else if (playerChoice !== 's' && playerChoice !== 'd' && playerChoice !== 'a'){
+            console.log('Invalid input, please only use a, s, d');
+            return;
+        }
         switch(playerChoice){
         case 'a':
             console.log(hero.physicalAttack(enemy));
@@ -223,7 +224,7 @@ function fight (hero,enemy) {
             break;
         }
         if (enemy.health <= 0){
-            document.removeEventListener('keyup',doFight());
+            document.removeEventListener('click',doFight);
             return;
         }
         let aiChoice = '';
@@ -249,11 +250,6 @@ function fight (hero,enemy) {
         }
         if (hero.health>0 && enemy.health >0){
             round++;
-        } else {
-            document.removeEventListener('keyup',doFight);
-            return;
-        }
+        } 
   };
-}
-function animation() {
 }
