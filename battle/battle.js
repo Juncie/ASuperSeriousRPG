@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class Character {
     constructor(name, strength, spellPower, health, spellCooldown, defenseCooldown) {
         this.name = name,
@@ -31,45 +30,6 @@ class Character {
     draw = () => {
         ctx.drawImage(this.img, this.sx, this.sy, 70, 65, this.x, this.y, canvas.width/ 13, canvas.height/ 13);
     }
-=======
-// const canvas = document.querySelector('canvas')
-//canvas.width = window.innerWidth
-//canvas.height = window.innerHeight
-//const ctx = canvas.getContext('2d')
-// CLASSES FOR  CHARACTERS
-class Character {
-  constructor(name, strength, spellPower, health, spellCooldown, defenseCooldown) {
-      this.name = name,
-      this.strength = strength,
-      this.spellPower = spellPower,
-      this.spellCooldown = spellCooldown,
-      this.health = health,
-      this.defenseCooldown = defenseCooldown,
-      this.defenseUsed = false,
-      this.defenseCooldownCounter = 0,
-      this.spellCooldownCounter = 0
-  }
-  receiveDamage = (enemy, damage) => {
-      this.health -= damage;
-      if (this.health > 0) {
-        return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. They now have a health of ${this.health}`;
-      } else {
-        return `${this.name} has died in act of combat.`;
-      }
-  };
-  physicalAttack = (enemy) => {
-      return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength));
-  }
-  spellAttack = (enemy, round) => {
-      if (this.spellCooldownCounter <= round || this.spellCooldownCounter == 0){
-          this.spellCooldownCounter = round + this.spellCooldown;
-          return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength)+1);
-      }
-  }
-  draw = () => {
-      ctx.drawImage(this.img, this.sx, this.sy, 70, 65, this.x, this.y, canvas.width/ 13, canvas.height/ 13);
-  }
->>>>>>> e50fd5611cdeafe6a656ba411e1290a3644b4dea
 }
 class Warrior extends Character {
   spell = () => {
@@ -231,7 +191,6 @@ let dragon = new Dragon('Dragon', 9, 10, 30, 2, 2);
 function fight (hero,enemy) {
 let round = 0;
 //   while (hero.health > 0 && enemy.health > 0) {
-<<<<<<< HEAD
     document.querySelectorAll(".attack-list li").forEach(li => 
         li.addEventListener("click", (event) => doFight(event))
     );
@@ -293,69 +252,4 @@ let round = 0;
             round++;
         } 
   };
-=======
-  document.querySelectorAll(".attack-list li").forEach(li => 
-      li.addEventListener("click", (event) => doFight(event))
-  );
-  // document.querySelectorAll('.attack-list li').addEventListener('click',doFight(event));
-  function doFight(event){
-      if (hero.health<=0 || enemy.health <=0){
-          console.log('Someone has died so will not run anything');
-          return
-      } 
-      console.log(round);
-      let playerChoice = event.target.innerText.slice(0,1).toLowerCase();
-      if (playerChoice == 'd' && hero.defenseCooldownCounter > round){
-          console.log('Cannot use defense because there is a cooldown');
-          return;
-      } else if (playerChoice == 's' && hero.spellCooldownCounter > round){
-          console.log('Cannot use spell because there is a cooldown');
-          return;
-      } else if (playerChoice !== 's' && playerChoice !== 'd' && playerChoice !== 'a'){
-          console.log('Invalid input, please only use a, s, d');
-          return;
-      }
-      switch(playerChoice){
-      case 'a':
-          console.log(hero.physicalAttack(enemy));
-          break;
-      case 's':
-          console.log(hero.spellAttack(enemy,round));
-          break;
-      case 'd':
-          console.log(hero.defense(round));
-          break;
-      }
-      if (enemy.health <= 0){
-          document.removeEventListener('click',doFight);
-          return;
-      }
-      let aiChoice = '';
-      while(true){
-          aiChoice = Math.floor(Math.random()*3);
-          if (aiChoice == 2 && enemy.defenseCooldownCounter > round){
-              continue;
-          } else if (aiChoice == 1 && enemy.spellCooldownCounter > round){
-              continue;
-          } else {break;}
-      }
-      switch(aiChoice){
-          case 0:
-              console.log(enemy.physicalAttack(hero));
-              break;
-          case 1:
-              let response = enemy.spellAttack(hero,round);
-              console.log(response);
-              break;
-          case 2:
-              console.log(enemy.defense(round));
-              break;
-      }
-      if (hero.health>0 && enemy.health >0){
-          round++;
-      } 
-};
-}
-function animation() {
->>>>>>> e50fd5611cdeafe6a656ba411e1290a3644b4dea
 }

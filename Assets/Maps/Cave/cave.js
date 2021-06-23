@@ -159,7 +159,7 @@ character.src = "../../../images/warrior.png";
 
 // dragin image
 let dragon = new Image();
-dragon.src = "../../emenies/Bone_Dragon.png";
+dragon.src = "../../enemies/Bone_Dragon.png";
 
 // INSTANCES OF CLASSES
 let newWarrior = new Character( 'Warrior', character, 123, 100 , ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0);
