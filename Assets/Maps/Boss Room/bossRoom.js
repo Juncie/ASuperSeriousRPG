@@ -97,7 +97,7 @@ function draw () {
            newWarrior.h = updatedTileSize
  
            newWarrior.draw();
-           }
+          }
          mapIndex ++;
    }
   }
@@ -187,6 +187,9 @@ window.onkeydown = function (e) {
       newWarrior.img = characterDown;
       currentPos += 32;
      }
-     // console.log(layerOneMap[currentPos - 32])
+  }
+
+  if (currentPos >= 514 && currentPos <= 540) {
+    window.location.replace("../../../battle/battle3.html");
   }
 };
