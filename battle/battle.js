@@ -33,12 +33,7 @@ class Character {
 
 
 class Warrior extends Character {
-  // physicalAttack = () => {
-  //   let slashFX = document.getElementsByClassName('slashFX')
-    
-  //   return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength));
 
-  // }
   receiveDamage = (enemy, damage) => {
 
       if (this.defenseUsed === true){
@@ -72,6 +67,7 @@ class Warrior extends Character {
         
         setTimeout(function() { document.querySelector('.bar').style.width = "0px";},3000) 
         setTimeout(function() {document.querySelector('p').innerText = `${warr.name} has died in act of combat.`},3000)
+        setTimeout(function() { window.location.replace("../ending/gameOver.html"); }, 6000);
         return `${this.name} has died in act of combat.`;
       }
   };
@@ -116,7 +112,8 @@ class FinalBoss extends Character {
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
       } else {
         document.querySelector('.bar2').style.width =  "0px"; 
-        document.querySelector('p').innerText = `${this.name} has died in act of combat.`;
+        setTimeout(function() { document.querySelector('p').innerText = `${this.name} has died in act of combat.`;},3000);
+        setTimeout(function() { window.location.replace("../ending/ending.html"); }, 6000);
         return `${this.name} has died in act of combat.`;
       }
   };
