@@ -60,41 +60,8 @@ class Warrior extends Character {
       }
   }
 }
-/*class Mage extends Character {    
-  defense = (round) => {
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
-          this.defenseCooldownCounter = round + this.defenseCooldown;
-          this.health += 15;
-          return `Mage has used Mend Wounds. Her health is now ${this.health}`
-      }
- }
-}
-class Rogue extends Character {
-  spell = () => {
-       console.log('Shadow Step')
-   }
-   receiveDamage = (enemy, damage) => {
-      if (this.defenseUsed === true){
-          damage = 0;
-          this.health -= damage;
-          this.defenseUsed = false;
-      } else {
-          this.health -= damage;
-      }
-      if (this.health > 0) {
-        return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
-      } else {
-        return `${this.name} has died in act of combat.`;
-      }
-  };
-   defense = (round) => {
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
-          this.defenseCooldownCounter = round + this.defenseCooldown;
-          this.defenseUsed = true;
-          return `Rogue has used Elude. He dodges the next attack`
-      }
-  }
-}*/
+
+
 class FinalBoss extends Character {
   spell = () => {
       console.log('Siphon Soul')
@@ -107,6 +74,9 @@ class FinalBoss extends Character {
       } else {
           this.health -= damage;
       }
+      if (damage > 0){
+        hurt();
+    }
       if (this.health > 0) {
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
       } else {
@@ -121,6 +91,7 @@ class FinalBoss extends Character {
       }
   }
 }
+
 class Grunt extends Character {
   spell = () => {
       console.log('Scream')
@@ -134,6 +105,7 @@ class Grunt extends Character {
       }
   }
 }
+
 class Dragon extends Character {
   spell = () => {
       console.log('Breathe Fire')
@@ -148,6 +120,9 @@ class Dragon extends Character {
       } else {
           this.health -= damage;
       }
+      if (damage > 0){
+        hurt();
+    }
       if (this.health > 0) {
         document.querySelector('p').innerText =`${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
@@ -168,43 +143,13 @@ class Dragon extends Character {
   }
 }
 
-/*class IceWoman extends Character {
-  spell = () => {
-      console.log('Ice Bolt')
-  }
-  receiveDamage = (enemy, damage) => {
-      if (this.defenseUsed === true){
-          damage = 0;
-          this.health -= damage;
-          this.defenseUsed = false;
-      } else {
-          this.health -= damage;
-      }
-      if (this.health > 0) {
-        return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
-      } else {
-        return `${this.name} has died in act of combat.`;
-      }
-  };
-  defense = (round) => {
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
-          this.defenseCooldownCounter = round + this.defenseCooldown;
-          this.defenseUsed = true;
-          return `Ice Woman has used Freeze. She haults incoming damage in the next round`
-      }
-  }
-}*/ 
 
 let warrior = new Warrior('Warrior', 12, 6, 130, 2, 2);
-//let mage = new Mage('Mage', 6, 12, 80, 0, 2);
-//let rogue = new Rogue('Rogue', 9, 9, 90, 3, 2);
 let finalBoss = new FinalBoss('Final Boss', 25, 14, 60, 3, 2);
 let grunt = new Grunt('Grunt', 12, 5, 30, 1, 3);
 let dragon = new Dragon('Dragon', 9, 10, 30, 2, 2);
-//let iceWoman = new IceWoman('Ice Woman', 5, 12, 25, 1 ,2);
 function fight (hero,enemy) {
 let round = 0;
-//   while (hero.health > 0 && enemy.health > 0) {
     document.querySelectorAll("#attack-list li").forEach(li => 
         li.addEventListener("click", (event) => doFight(event))
     );
@@ -288,5 +233,35 @@ function func1()
 
 }
 
+
+
 window.onload = fight(warrior, dragon);
+
+
+function hurt(){
+    opacity=0 //opacity of image
+    var increase=1 //increase opacity indicator
+    var decrease=0 //decrease opacity indicator
+
+    function fade(){
+    if (opacity<0.6&&increase)
+    opacity+=0.05
+    else{
+    increase=0
+    decrease=1
+    }
+    
+    if (opacity>0.3&&decrease)
+    opacity-=0.05
+    else{
+    increase=1
+    decrease=0
+    }
+    
+    document.getElementById('villain').style.opacity=opacity
+    }
+    
+    let interval = setInterval(fade,100);
+    setTimeout(function(){clearInterval(interval);document.getElementById('villain').style.opacity=1},3000);
+}
 
