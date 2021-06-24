@@ -5,7 +5,7 @@ canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 const ground = new Image();
-ground.src = '../../tilesets/Cave.png'
+ground.src = '../../tileSets/Cave.png'
 
 const tileSize = 16;
 const tileOutputSize = 1.8;
@@ -195,7 +195,7 @@ window.onkeydown = function (e) {
   if (e.key === "ArrowLeft") {
     if (layerOneMap[currentPos - 1] === 280) {
       //newWarrior.x -= 16;
-      newWarrior.img = characterLeft;
+      newWarrior.img = characterLeft
       currentPos -= 1;
 
     }
@@ -203,27 +203,27 @@ window.onkeydown = function (e) {
   if (e.key === "ArrowRight") {
     if (layerOneMap[currentPos + 1] === 280) {
       //newWarrior.x += 16;
-      newWarrior.img = characterRight;
+      newWarrior.img = characterRight
       currentPos += 1;
     }
   }
   if (e.key === "ArrowUp") {
     if (layerOneMap[currentPos - 32] === 280) {
       // newWarrior.y -= 16;
-      newWarrior.img = character;
+      newWarrior.img = character
       currentPos -= 32;
     }
   }
   if (e.key === "ArrowDown") {
     if (layerOneMap[currentPos + 32] === 280) {
       // newWarrior.y += 16;
-      newWarrior.img = characterDown;
+      newWarrior.img = characterDown
       currentPos += 32;
     }
   }
   console.log(currentPos)
   if (currentPos <= 500) {
-     window.location.href = "../../../battle/battle2.html";
+     window.location.href = "../../../battle/battle.html";
   } 
 };
 

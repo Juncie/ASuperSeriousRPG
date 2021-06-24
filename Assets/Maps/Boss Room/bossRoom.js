@@ -91,13 +91,13 @@ function draw () {
         // }
 
          if (currentPos === mapIndex) {
-           newWarrior.x = row * tileOutputSize
-           newWarrior.y = (col - tileSize) * tileOutputSize
-           newWarrior.w = updatedTileSize
-           newWarrior.h = updatedTileSize
+          newWarrior.x = (row * tileOutputSize) - 16
+          newWarrior.y = (col - 1.8* tileSize) * tileOutputSize
+           //newWarrior.w = updatedTileSize
+           //newWarrior.h = updatedTileSize
  
            newWarrior.draw();
-          }
+           }
          mapIndex ++;
    }
   }
@@ -119,7 +119,7 @@ class Character {
   }
 
   draw = () => {
-    ctx.drawImage(this.img, this.sx, this.sy, 50, 65, this.x, this.y, canvas.width / 24, canvas.height / 32);
+    ctx.drawImage(this.img, this.sx, this.sy, 50, 65, this.x, this.y, canvas.width / 38, canvas.height / 20);
   }
 }
 
@@ -141,7 +141,7 @@ characterRight.src = "../../../images/warrior.png"
 
 
 // INSTANCES OF CLASSES
-let newWarrior = new Character('Warrior', character, 0, 0, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 1.5, .5);
+let newWarrior = new Character('Warrior', character, 0, 0, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0);
 
 
 function animate() {
@@ -187,9 +187,6 @@ window.onkeydown = function (e) {
       newWarrior.img = characterDown;
       currentPos += 32;
      }
-  }
-
-  if (currentPos >= 514 && currentPos <= 540) {
-    window.location.replace("../../../battle/battle3.html");
+     // console.log(layerOneMap[currentPos - 32])
   }
 };
