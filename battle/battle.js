@@ -108,19 +108,19 @@ class FinalBoss extends Character {
   }
 }
 
-class Dragon extends Character {
-  spell = () => {
-      console.log('Breath Fire');
-  }
-  defense = (round) => {
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
-          this.defenseCooldownCounter = round + this.defenseCooldown;
-          this.health += 10;
-          document.querySelector('p').innerText = `'Lich has used heal. His health is now ${this.health}`
-          return `'Lich has used heal. His health is now ${this.health}`
-      }
-  }
-}
+// class Dragon extends Character {
+//   spell = () => {
+//       console.log('Breath Fire');
+//   }
+//   defense = (round) => {
+//       if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
+//           this.defenseCooldownCounter = round + this.defenseCooldown;
+//           this.health += 10;
+//           document.querySelector('p').innerText = `'Lich has used heal. His health is now ${this.health}`
+//           return `'Lich has used heal. His health is now ${this.health}`
+//       }
+//   }
+// }
 
 class Lich extends Character {
   spell = () => {
@@ -166,8 +166,8 @@ class Lich extends Character {
       if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
           this.defenseCooldownCounter = round + this.defenseCooldown;
           this.defenseUsed = true;
-          setTimeout(function() {document.querySelector('p').innerText = `Dragon has used Mirror Image. Enemy will take their own damage`},3000);
-          return `Dragon has used Mirror Image. Enemy will take their own damage`
+          setTimeout(function() {document.querySelector('p').innerText = `Lich has used Mirror Image. Enemy will take their own damage`},3000);
+          return `Lich has used Mirror Image. Enemy will take their own damage`;
       }
   }
 }
@@ -175,8 +175,8 @@ class Lich extends Character {
 
 let warrior = new Warrior('Warrior', 12, 6, 130, 2, 2);
 let finalBoss = new FinalBoss('Final Boss', 25, 14, 60, 3, 2);
-let lich = new Lich('lich', 12, 5, 30, 1, 3);
-let dragon = new Dragon('Dragon', 9, 10, 30, 2, 2);
+let lich = new Lich('lich', 12, 5, 40, 1, 3);
+// let dragon = new Dragon('Dragon', 9, 10, 30, 2, 2);
 function fight (hero,enemy) {
 let round = 0;
     document.querySelectorAll("#attack-list li").forEach(li => 
@@ -294,7 +294,7 @@ function hurt(){
     setTimeout(function(){clearInterval(interval);document.getElementById('villain').style.opacity=1},3000);
 }
 
-window.onload = fight(warrior, lich);
+// window.onload = fight(warrior, lich);
 
 // added 
 
