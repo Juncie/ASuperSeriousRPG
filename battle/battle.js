@@ -37,7 +37,7 @@ class Warrior extends Character {
 
       if (this.defenseUsed === true){
           let warrior = this;
-          this.health -= damage/2;
+          this.health -= damage / 2;
           if (this.health <= 40) {
             document.querySelector('.bar').style.backgroundColor = "red";
             setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
@@ -152,7 +152,6 @@ class Dragon extends Character {
 }
 
 
-let grunMaxhealth = 40;
 class Grunt extends Character {
   spell = () => {
     console.log('Scream')
@@ -183,7 +182,8 @@ class Grunt extends Character {
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
       } else {
         document.querySelector('.bar2').style.width =  "0px"; 
-        document.querySelector('p').innerText = `${this.name} has died in act of combat.`
+        let grunt = this;
+        setTimeout(function() { document.querySelector('p').innerText = `${grunt.name} has died in act of combat.`},3000);
         return `${this.name} has died in act of combat.`;
       }
   };
@@ -193,7 +193,7 @@ class Grunt extends Character {
       if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
           this.defenseCooldownCounter = round + this.defenseCooldown;
           this.defenseUsed = true;
-          document.querySelector('p').innerText = `Dragon has used Mirror Image. Enemy will take their own damage`
+          setTimeout(function() { sedocument.querySelector('p').innerText = `Dragon has used Mirror Image. Enemy will take their own damage`},3000);
           return `Dragon has used Mirror Image. Enemy will take their own damage`
       }
   }
