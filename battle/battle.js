@@ -1,3 +1,5 @@
+// let soundeffect = new Audio()
+// soundeffect.src="../../assets/music/"
 class Character {
     constructor(name, strength, spellPower, health, spellCooldown, defenseCooldown) {
         this.name = name,
@@ -24,16 +26,19 @@ class Character {
     spellAttack = (enemy, round) => {
         if (this.spellCooldownCounter <= round || this.spellCooldownCounter == 0){
             this.spellCooldownCounter = round + this.spellCooldown;
-            return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength)+1);
+            return enemy.receiveDamage(this, Math.floor(Math.random() * this.spellPower)+1);
         }
     }
 }
 
 
 class Warrior extends Character {
-  spell = () => {
-      console.log('Toss Axe');
-  }
+  // physicalAttack = () => {
+  //   let slashFX = document.getElementsByClassName('slashFX')
+    
+  //   return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength));
+
+  // }
   receiveDamage = (enemy, damage) => {
 
       if (this.defenseUsed === true){
@@ -297,7 +302,7 @@ let round = 0;
 }
 
 let item = document.querySelectorAll('li')
-var audio = document.querySelector('audio')
+var hoverSound = document.getElementsByClassName("hoverSE")[0];
 
 for(let eachItem of item) {
 
@@ -307,7 +312,7 @@ eachItem.addEventListener("mouseout", func1, false);
 function func()
 {  
    eachItem.setAttribute("style", "background-color:#fff237a1;")
-//    audio();
+   hoverSound.play();
 }
 
 function func1()

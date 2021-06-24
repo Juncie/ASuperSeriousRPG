@@ -163,7 +163,15 @@ let currentPos = defaultPos;
 
 // warrior image
 let character = new Image();
-character.src = "../../../images/warrior.png";
+character.src = "../../../images/warrior_up.png"
+let characterDown = new Image();
+characterDown.src = "../../../images/warrior_down.png"
+let characterLeft = new Image();
+characterLeft.src = "../../../images/warrior_left.png"
+let characterRight = new Image();
+characterRight.src = "../../../images/warrior.png"
+
+
 
 // INSTANCES OF CLASSES
 let newWarrior = new Character('Warrior', character, 123, 100, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0);
@@ -187,6 +195,7 @@ window.onkeydown = function (e) {
   if (e.key === "ArrowLeft") {
     if (layerOneMap[currentPos - 1] === 280) {
       //newWarrior.x -= 16;
+      newWarrior.img = characterLeft;
       currentPos -= 1;
 
     }
@@ -194,18 +203,21 @@ window.onkeydown = function (e) {
   if (e.key === "ArrowRight") {
     if (layerOneMap[currentPos + 1] === 280) {
       //newWarrior.x += 16;
+      newWarrior.img = characterRight;
       currentPos += 1;
     }
   }
   if (e.key === "ArrowUp") {
     if (layerOneMap[currentPos - 32] === 280) {
       // newWarrior.y -= 16;
+      newWarrior.img = character;
       currentPos -= 32;
     }
   }
   if (e.key === "ArrowDown") {
     if (layerOneMap[currentPos + 32] === 280) {
       // newWarrior.y += 16;
+      newWarrior.img = characterDown;
       currentPos += 32;
     }
   }
