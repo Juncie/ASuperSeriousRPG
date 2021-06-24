@@ -154,6 +154,7 @@ class Dragon extends Character {
       document.querySelector('.bar2').style.width =  "0px"; 
       let lich = this;
       setTimeout(function() { document.querySelector('p').innerText = `${lich.name} has died in act of combat.`},3000);
+      setTimeout(function() { window.location.replace("../Assets/Maps/Boss Room/Boss.html"); }, 6000);
       return `${this.name} has died in act of combat.`;
     }
 };
@@ -206,11 +207,12 @@ class Lich extends Character {
         document.querySelector('.bar2').style.width =  "0px"; 
         let lich = this;
         setTimeout(function() { document.querySelector('p').innerText = `${lich.name} has died in act of combat.`},3000);
+        setTimeout(function() { window.location.replace("../Assets/Maps/Cave/cave.html"); }, 6000);
         return `${this.name} has died in act of combat.`;
       }
   };
   defense = (round) => {
-    if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
+    if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 2){
         this.defenseCooldownCounter = round + this.defenseCooldown;
         this.health += 10;
         document.querySelector('.bar2').style.width = this.health * 2 + "px";

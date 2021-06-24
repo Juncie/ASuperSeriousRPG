@@ -211,7 +211,7 @@ window.onkeydown = function (e) {
   }
   console.log(currentPos)
   if (currentPos <= 500) {
-     window.location.href = "../../../battle/battle.html";
+     window.location.href = "../../../battle/battle2.html";
   } 
 };
 

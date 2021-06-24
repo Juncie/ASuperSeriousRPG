@@ -159,6 +159,7 @@ class Character {
  
 // let defaultPos = 1011;
  let defaultPos = 640;
+ let lichPos = 146;
  
  
  let currentPos = defaultPos;
@@ -166,6 +167,7 @@ class Character {
 //  warrior image
  let character = new Image();
  character.src = "../../../images/warrior.png";
+
  
 // INSTANCES OF CLASSES
  let newWarrior = new Character('Warrior', character, 0, 0, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0, tileSize *1.5, tileSize * 1.5);
@@ -193,7 +195,6 @@ class Character {
    }
    if (e.key === "ArrowRight") {
      if (layerOneMap[currentPos + 1] === 182 || layerOneMap[currentPos + 1] === 183) {
-       //newWarrior.x += 16;
        currentPos += 1;
        
       }
@@ -210,6 +211,8 @@ class Character {
      if (layerOneMap[currentPos + 32] === 182 || layerOneMap[currentPos + 32] === 183) {
        currentPos += 32;
       }
-      // console.log(layerOneMap[currentPos - 32])
+   }
+   if (currentPos === 145 || currentPos === 146) {
+    window.location.replace("../../../battle/battle.html");
    }
  };
