@@ -68,7 +68,7 @@ p {
 .health-bar {
     position: relative;
     margin-top: 58vh;
-    color: black;
+    color: white;
     border-radius: 5px;
     margin-left: 5%;
     font-family: 'Press Start 2P', cursive;
@@ -83,7 +83,7 @@ p {
   }
 
   .health-bar2 {
-    color: purple;
+    color: gold;
     border-radius: 5px;
     position: relative;
     margin-top: 3%;
