@@ -193,6 +193,7 @@ function animate() {
  window.onkeydown = function (e) {
   
   if(!Musicplay){
+    console.log(Musicplay)
     bkrdMusic.play()
     Musicplay = true;
   }
