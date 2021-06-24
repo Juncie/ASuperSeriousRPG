@@ -193,7 +193,7 @@ class Grunt extends Character {
       if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
           this.defenseCooldownCounter = round + this.defenseCooldown;
           this.defenseUsed = true;
-          setTimeout(function() { sedocument.querySelector('p').innerText = `Dragon has used Mirror Image. Enemy will take their own damage`},3000);
+          setTimeout(function() {document.querySelector('p').innerText = `Dragon has used Mirror Image. Enemy will take their own damage`},3000);
           return `Dragon has used Mirror Image. Enemy will take their own damage`
       }
   }
@@ -295,13 +295,15 @@ let round = 0;
                 console.log(enemy.defense(round));
                 break;
         }
-        if (hero.health>0 && enemy.health >0){
+        if (hero.health>0 && enemy.health > 0){
             round++;
         } 
   };
 }
 
 let item = document.querySelectorAll('li')
+var audio = document.querySelector('audio')
+
 for(let eachItem of item) {
 
 eachItem.addEventListener("mouseover", func, false);
@@ -310,6 +312,7 @@ eachItem.addEventListener("mouseout", func1, false);
 function func()
 {  
    eachItem.setAttribute("style", "background-color:#fff237a1;")
+//    audio();
 }
 
 function func1()
@@ -319,7 +322,9 @@ function func1()
 
 }
 
-window.onload = fight(warrior, grunt);
+// window.onload = fight(warrior, Dragon);
+
+// fight(warrior, Grunt)
 
 // added 
 

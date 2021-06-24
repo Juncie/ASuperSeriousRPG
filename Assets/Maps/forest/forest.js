@@ -122,14 +122,14 @@ function draw () {
             ctx.drawImage(grass, sourceX, sourceY, tileSize, tileSize, row * tileOutputSize, col * tileOutputSize, updatedTileSize, updatedTileSize);
          }
 
-          if (currentPos === mapIndex) {
-            newWarrior.x = row * tileOutputSize
-            newWarrior.y = (col - tileSize) * tileOutputSize
-            newWarrior.w = updatedTileSize
-            newWarrior.h = updatedTileSize
+          if (currentPos === mapIndex - 32) {
+            newWarrior.x = (row * tileOutputSize) - 16
+            newWarrior.y = (col - 1.8* tileSize) * tileOutputSize
+            // newWarrior.w = updatedTileSize
+            // newWarrior.h = updatedTileSize
   
             newWarrior.draw();
-            }
+          }
           mapIndex ++;
     }
    }
@@ -139,7 +139,7 @@ function draw () {
 // DRAWING AND ANIMATING THE CHARACTER
 
 class Character {
-   constructor(name, img, strength, health, x, y, sx, sy) {
+   constructor(name, img, strength, health, x, y, sx, sy, w, h) {
      this.img = img;
      this.name = name,
        this.strength = strength,
@@ -148,10 +148,12 @@ class Character {
        this.y = y,
        this.sx = sx,
        this.sy = sy
+       this.w = w
+       this.h = h
    }
  
    draw = () => {
-     ctx.drawImage(this.img, this.sx, this.sy, 50, 65, this.x, this.y, canvas.width / 27, canvas.height / 16);
+     ctx.drawImage(this.img, this.sx, this.sy, 50, 65, this.x, this.y, this.w, this.h);
    }
  }
  
@@ -166,7 +168,7 @@ class Character {
  character.src = "../../../images/warrior.png";
  
 // INSTANCES OF CLASSES
- let newWarrior = new Character('Warrior', character, 0, 0, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0);
+ let newWarrior = new Character('Warrior', character, 0, 0, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0, tileSize *1.5, tileSize * 1.5);
  
  
  function animate() {
