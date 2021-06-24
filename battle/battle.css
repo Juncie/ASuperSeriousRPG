@@ -74,7 +74,7 @@ p {
   .bar {
     border: 3px solid white;
     background: green;
-    width: 260px;
+    width: 220px;
     height: 10px;
     position: relative;
     transition: width .5s linear;

@@ -29,6 +29,7 @@ class Character {
     }
 }
 
+
 class Warrior extends Character {
   spell = () => {
       console.log('Toss Axe');
@@ -225,7 +226,7 @@ class Lich extends Character {
 }
 
 
-let warrior = new Warrior('Warrior', 12, 6, 130, 2, 2);
+let warrior = new Warrior('Warrior', 12, 6, 110, 2, 2);
 let finalBoss = new FinalBoss('Final Boss', 25, 14, 80, 3, 2);
 let lich = new Lich('lich', 12, 5, 40, 1, 3);
 let dragon = new Dragon('Dragon', 9, 10, 50, 2, 2);
