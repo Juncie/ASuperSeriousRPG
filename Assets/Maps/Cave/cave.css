@@ -1,4 +1,12 @@
-html, body {
-    margin: 0 !important;
-    padding: 0 !important;
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+canvas {
+    padding: 1vh 0 0vh 30vw;
+    background-color: black;
+
 }

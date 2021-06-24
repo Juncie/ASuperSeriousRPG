@@ -11,6 +11,6 @@ body {
 
 canvas {
     padding-left: 60%;
-    padding-top: 5px;
+    padding-top: 1rem;
     background-color: black;
 }
