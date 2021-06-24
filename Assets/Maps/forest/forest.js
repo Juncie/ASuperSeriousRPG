@@ -176,8 +176,11 @@ class Character {
 // INSTANCES OF CLASSES
  let newWarrior = new Character('Warrior', character, 0, 0, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0, tileSize *1.5, tileSize * 1.5);
  
- 
- function animate() {
+let bkrdMusic = new Audio()
+bkrdMusic.src = "Game Music.mp3" 
+ let Musicplay = false
+
+function animate() {
    requestAnimationFrame(animate);
    // WATCH OUT FOR CLEAR
    ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -188,7 +191,12 @@ class Character {
  window.onload = animate;
  
  window.onkeydown = function (e) {
- 
+  
+  if(!Musicplay){
+    console.log(Musicplay)
+    bkrdMusic.play()
+    Musicplay = true;
+  }
    // MOVEMENT OF THE MAIN CHARACTER
    if (e.key === "ArrowLeft") {
      if (layerOneMap[currentPos - 1] === 182 || layerOneMap[currentPos - 1] === 183) {
