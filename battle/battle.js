@@ -302,8 +302,8 @@ let round = 0;
 }
 
 let item = document.querySelectorAll('li')
-var audio = document.querySelector('audio')
-
+var audio = document.getElementsByTagName("audio")[0];
+audio.play();
 for(let eachItem of item) {
 
 eachItem.addEventListener("mouseover", func, false);
@@ -312,7 +312,7 @@ eachItem.addEventListener("mouseout", func1, false);
 function func()
 {  
    eachItem.setAttribute("style", "background-color:#fff237a1;")
-//    audio();
+   audio();
 }
 
 function func1()
