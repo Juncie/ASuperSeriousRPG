@@ -32,7 +32,7 @@ li {
 }
 
 
-p{
+p {
     width: 93%;
     font-size: 1.2em;
     display: flex;
@@ -53,3 +53,39 @@ p{
     overflow: hidden;
 }
 
+/*  added */
+.health-bar {
+    position: fixed;
+    color: lightblue;
+    border-radius: 5px;
+    position: fixed;
+    margin-left: 5%;
+    width: 10%;
+    font-family: 'Press Start 2P', cursive;
+  }
+  .bar {
+    border: 3px solid white;
+    background: green;
+    width: 260px;
+    height: 10px;
+    position: relative;
+    transition: width .5s linear;
+  }
+
+  .health-bar2 {
+    color: purple;
+    border-radius: 5px;
+    position: fixed;
+    margin-top: 3%;
+    padding-left: 60%;
+    width: 10%;
+    font-family: 'Press Start 2P', cursive;
+  }
+  .bar2 {
+    border: 3px solid white;
+    background: green;
+    width: 80px;
+    height: 10px;
+    position: relative;
+    transition: width .5s linear;
+  }
