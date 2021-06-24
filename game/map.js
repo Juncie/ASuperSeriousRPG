@@ -38,12 +38,12 @@ function draw() {
 
   for (let col = 0; col < mapHeight; col += tileSize) {
     for (let row = 0; row < mapWidth; row += tileSize) {
-      let tileVal = layerOneMap[mapIndex];
+      let tileVal = layerOneMap[mapIndex];  
       if (tileVal != 0) {
         tileVal -= 1;
         sourceY = Math.floor(tileVal / tileCol) * tileSize;
         sourceX = (tileVal % tileCol) * tileSize;
-        ctx.drawImage(ground, sourceX, sourceY, tileSize, tileSize, row * tileOutputSize, col * tileOutputSize, updatedTileSize, updatedTileSize);
+        ctx.drawImage(grass, sourceX, sourceY, tileSize, tileSize, row * tileOutputSize, col * tileOutputSize, updatedTileSize, updatedTileSize);
 
         if (currentPos === mapIndex) {
           newWarrior.x = row * tileOutputSize
@@ -105,7 +105,7 @@ function animate() {
   // WATCH OUT FOR CLEAR
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   draw();
-  // newWarrior.draw();
+  newWarrior.draw();
   ctx.drawImage(dragon, canvas.width / 13, canvas.height / 7, 250, 150)
 }
 
@@ -141,6 +141,6 @@ window.onkeydown = function (e) {
   }
   console.log(currentPos)
   // if (currentPos <= 600) {
-  //    window.location.href = "../Boss Room/Boss.html";
+  //    window.location.href = "../battle/battle.html";
   // } 
 };

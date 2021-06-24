@@ -9,26 +9,10 @@ ground.src = '../../tileSets/Cave.png'
 ground.onload = draw;
 
 const boss = new Image();
-boss.src = "../../emenies/Boss.png"
+boss.src = "../../enemies/Boss.png"
 
 const warr = new Image ();
 warr.src = "../../../images/warrior back.png"
-
-class Character {
-   constructor(img, x, y) {
-       this.img = img;
-       this.x = x,
-       this.y = y
-
-   }
-   
-   draw = () => {
-       ctx.drawImage(this.img, this.x, this.y);
-   }
- }
-
-const newChar = new Character (warr, 450, 800)
-
 
 const tileSize = 32;
 const tileOutputSize = .9;
@@ -84,66 +68,114 @@ let sourceX = 0;
 let sourceY = 0;
 
 function draw () {
-    for (let col = 0; col < mapHeight; col += tileSize) {
-       for (let row = 0; row < mapWidth; row += tileSize) {
-          let tileVal = layerOneMap[mapIndex];
-          if(tileVal !=0) {
-             tileVal -= 1;
-             sourceY = Math.floor(tileVal/tileCol) * tileSize;
-             sourceX = (tileVal % tileCol) * tileSize;
-             ctx.drawImage(ground, sourceX, sourceY, tileSize, tileSize, row * tileOutputSize, col * tileOutputSize, updatedTileSize, updatedTileSize);
-          }
-          mapIndex ++;
-       }
-    }
- }
- 
- function animate() {
-   requestAnimationFrame(animate);
-   // ctx.drawImage(boss, 200, 0)
-   ctx.clearRect(0,0,canvas.width, canvas.height)
-   newChar.draw() 
-   draw()
-}
- 
- animate();
+  
+  let mapIndex = 0;
 
-let defaultPos = 530;
+  for (let col = 0; col < mapHeight; col += tileSize) {
+     for (let row = 0; row < mapWidth; row += tileSize) {
+       let tileVal = layerOneMap[mapIndex];
+       if (tileVal != 0) {
+         tileVal -= 1;
+         sourceY = Math.floor(tileVal / tileCol) * tileSize;
+         sourceX = (tileVal % tileCol) * tileSize;
+         ctx.drawImage(ground, sourceX, sourceY, tileSize, tileSize, row * tileOutputSize, col * tileOutputSize, updatedTileSize, updatedTileSize);
+ 
+//LINK TO SECOND LAYER
+           
+        //    tileVal = layerTwoMap[mapIndex];
+        //    if(tileVal !=0) {
+        //    tileVal -= 1;
+        //    sourceY = Math.floor(tileVal/tileCol) * tileSize;
+        //    sourceX = (tileVal % tileCol) * tileSize;
+        //    ctx.drawImage(grass, sourceX, sourceY, tileSize, tileSize, row * tileOutputSize, col * tileOutputSize, updatedTileSize, updatedTileSize);
+        // }
+
+         if (currentPos === mapIndex) {
+           newWarrior.x = row * tileOutputSize
+           newWarrior.y = (col - tileSize) * tileOutputSize
+           newWarrior.w = updatedTileSize
+           newWarrior.h = updatedTileSize
+ 
+           newWarrior.draw();
+           }
+         mapIndex ++;
+   }
+  }
+}
+}
+
+// DRAWING AND ANIMATING THE CHARACTER
+
+class Character {
+  constructor(name, img, strength, health, x, y, sx, sy) {
+    this.img = img;
+    this.name = name,
+      this.strength = strength,
+      this.health = health,
+      this.x = x,
+      this.y = y,
+      this.sx = sx,
+      this.sy = sy
+  }
+
+  draw = () => {
+    ctx.drawImage(this.img, this.sx, this.sy, 50, 65, this.x, this.y, canvas.width / 24, canvas.height / 32);
+  }
+}
+
+// let defaultPos = 1011;
+let defaultPos = 1007 ;
+
+
 let currentPos = defaultPos;
 
- window.onkeydown = function (e) {
-   console.log(e.key);
-   console.log(currentPos);
- 
-   
-   // MOVEMENT OF THE MAIN CHARACTER
-   if (e.key === "ArrowLeft") {
-     if (layerOneMap[currentPos - 1] === 61) {
-       newChar.x -= tileSize;
-       currentPos -= 1;
+//  warrior image
+let character = new Image();
+character.src = "../../../images/warrior back.png";
+
+// INSTANCES OF CLASSES
+let newWarrior = new Character('Warrior', character, 0, 0, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0);
+
+
+function animate() {
+  requestAnimationFrame(animate);
+  // WATCH OUT FOR CLEAR
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  // newWarrior.draw();
+  draw();
+}
+
+window.onload = animate;
+
+window.onkeydown = function (e) {
+
+  // MOVEMENT OF THE MAIN CHARACTER
+  if (e.key === "ArrowLeft") {
+    if (layerOneMap[currentPos - 1] === 61) {
+      currentPos -= 1;
+  
      }
-   }
-   if (e.key === "ArrowRight") {
-     if (layerOneMap[currentPos + 1] === 61) {
-       newChar.x += tileSize; 
-       currentPos += 1;
-      //  console.log(layerOneMap[currentPos + 1]);
-       // console.log(MAP.tiles[currentPos + 1]);
+     console.log(layerOneMap[currentPos + 1])
+  }
+  if (e.key === "ArrowRight") {
+    if (layerOneMap[currentPos + 1] === 61) {
+      //newWarrior.x += 16;
+      currentPos += 1;
+      
      }
-    //  console.log(layerOneMap[currentPos + 1]);
-   }
-   if (e.key === "ArrowUp") {
-     if (layerOneMap[currentPos - tileSize] === 61) {
-       newChar.y -= tileSize;
-       currentPos -= tileSize;
+     console.log(layerOneMap[currentPos - 1])
+  }
+  if (e.key === "ArrowUp") {
+    if (layerOneMap[currentPos - 32] === 61) {
+      currentPos -= 32;
+      
      }
-    //  console.log(layerOneMap[currentPos + 1]);
-   }
-   if (e.key === "ArrowDown") {
-     if (layerOneMap[currentPos + tileSize] === 61) {
-       newChar.y += tileSize;
-       currentPos += tileSize;
+     console.log(layerOneMap[currentPos + 32])
+  }
+  if (e.key === "ArrowDown") {
+    if (layerOneMap[currentPos + 32] === 61) {
+      currentPos += 32;
      }
-    //  console.log(layerOneMap[currentPos + 1]);
-   }
- };
+     // console.log(layerOneMap[currentPos - 32])
+  }
+};

@@ -10,8 +10,7 @@ body {
 }
 
 canvas {
-    padding-left: 53%;
-    justify-content: center;
-    height: 117.5vh;
-    width:93vw,
+    padding-left: 60%;
+    padding-top: 5px;
+    background-color: black;
 }

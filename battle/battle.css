@@ -1,69 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
-    background: url(../Assets/fightBkrd/Forest\ background.png) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background: url(../assets/fightBkrd/Forest\ background.png) no-repeat center;
+    /* -webkit-background-size: cover; */
+    /* -moz-background-size: cover; */
+    /* -o-background-size: cover; */
     background-size: cover;
     margin: 0;
 }
 
-
-.attack-list {
+.combat-box {
     position: fixed;
-    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.363);
     width: 100%;
-    height: 100px;
-    background-color: white;
+    height: 25%;
+    bottom: 0;
+    color: white;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
     flex-direction: row;
-    padding: 0;
+    justify-content: center;
+    font-family: 'Press Start 2P', cursive;
 }
 
-.attack-list > ul {
-    border: 1px solid black;
-    width: 100%;
-    height: 100%;
+ul {
     list-style: none;
+    display: flex;
+    width: 50%;
+    font-size: 1.5em;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 7em;
+    border: .3em white solid;
+    margin: 0;
+    height: 93%;
+    border-radius: 1em;
+    margin-bottom: 1em
+}
+
+li {
+    margin: 1em;
+}
+
+
+
+p{
+    width: 93%;
+    font-size: 1.2em;
+    display: flex;
+    line-height: 1.8em;
+    border: .3em white solid;
+    margin: 0;
+    height: 93%;
+    border-radius: 1em;
+    margin-right: 6px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0;
 }
 
-ul > li {
-    border: 1px solid black;
-    width: 100%;
-    height: 100%; 
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#hero-back {
-    height: 70%;
-    width: 70%;
-    margin-bottom: 10%;
-    padding-right: 10%;
-}
-
-#villain {
-    height: 60%;
-    width: 20%;
-    position: relative;
-    left: 25em;
-    position: fixed
-}
-
-.battle-imgs {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    height:100%;
-    width: 150%;
+#villain{
+    position: fixed;
+    right: 36vw;
+    bottom: 10vh;
 }
 
