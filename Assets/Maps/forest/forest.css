@@ -5,5 +5,7 @@
 }
 
 canvas {
-    margin: 4vh 0 0vh 30vw;
+    padding: 1vh 0 0vh 30vw;
+    background-color: black;
+
 }

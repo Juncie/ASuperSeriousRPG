@@ -10,7 +10,7 @@ grass.onload = draw;
 
 
 let tileSize = 32;
-let tileOutputSize = .87;
+let tileOutputSize = .9;
 let updatedTileSize = tileSize * tileOutputSize;
 
 let tileCol = 36;

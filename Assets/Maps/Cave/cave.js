@@ -8,7 +8,7 @@ const ground = new Image();
 ground.src = '../../tilesets/Cave.png'
 
 const tileSize = 16;
-const tileOutputSize = 1.7;
+const tileOutputSize = 1.8;
 const updatedTileSize = tileSize * tileOutputSize;
 
 const tileCol = 32;
@@ -156,8 +156,7 @@ class Character {
   }
 }
 
-// let defaultPos = 1011;
-let defaultPos = 700;
+let defaultPos = 1008;
 
 
 let currentPos = defaultPos;
@@ -211,9 +210,9 @@ window.onkeydown = function (e) {
     }
   }
   console.log(currentPos)
-  // if (currentPos <= 600) {
-  //    window.location.href = "../Boss Room/Boss.html";
-  // } 
+  if (currentPos <= 500) {
+     window.location.href = "../../../battle/battle.html";
+  } 
 };
 
 

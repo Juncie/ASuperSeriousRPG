@@ -15,7 +15,7 @@ const warr = new Image ();
 warr.src = "../../../images/warrior back.png"
 
 const tileSize = 32;
-const tileOutputSize = .9;
+const tileOutputSize = .89;
 const updatedTileSize = tileSize * tileOutputSize;
 
 const tileCol = 16;
