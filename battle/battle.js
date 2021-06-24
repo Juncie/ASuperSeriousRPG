@@ -10,14 +10,14 @@ class Character {
         this.defenseCooldownCounter = 0,
         this.spellCooldownCounter = 0
     }
-    // receiveDamage = (enemy, damage) => {
-    //     this.health -= damage;
-    //     if (this.health > 0) {
-    //       return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. They now have a health of ${this.health}`;
-    //     } else {
-    //       return `${this.name} has died in act of combat.`;
-    //     }
-    // };
+    receiveDamage = (enemy, damage) => {
+        this.health -= damage;
+        if (this.health > 0) {
+          return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. They now have a health of ${this.health}`;
+        } else {
+          return `${this.name} has died in act of combat.`;
+        }
+    };
     physicalAttack = (enemy) => {
         return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength));
     }
@@ -37,7 +37,9 @@ class Warrior extends Character {
 
       if (this.defenseUsed === true){
           let warrior = this;
-          this.health -= damage / 2;
+          console.log(`Original damage ${damage} - Reduced Damage ${damage/2}`)
+          damage = damage / 2
+          this.health -= damage;
           if (this.health <= 40) {
             document.querySelector('.bar').style.backgroundColor = "red";
             setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
@@ -76,56 +78,39 @@ class Warrior extends Character {
       }
   }
 }
-/*class Mage extends Character {    
-  defense = (round) => {
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
-          this.defenseCooldownCounter = round + this.defenseCooldown;
-          this.health += 15;
-          return `Mage has used Mend Wounds. Her health is now ${this.health}`
-      }
- }
-}
-class Rogue extends Character {
-  spell = () => {
-       console.log('Shadow Step')
-   }
-   receiveDamage = (enemy, damage) => {
-      if (this.defenseUsed === true){
-          damage = 0;
-          this.health -= damage;
-          this.defenseUsed = false;
-      } else {
-          this.health -= damage;
-      }
-      if (this.health > 0) {
-        return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
-      } else {
-        return `${this.name} has died in act of combat.`;
-      }
-  };
-   defense = (round) => {
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
-          this.defenseCooldownCounter = round + this.defenseCooldown;
-          this.defenseUsed = true;
-          return `Rogue has used Elude. He dodges the next attack`
-      }
-  }
-}*/
+
+
 class FinalBoss extends Character {
   spell = () => {
       console.log('Siphon Soul')
   }
   receiveDamage = (enemy, damage) => {
+    if (this.health <= 10) {
+        document.querySelector('.bar2').style.backgroundColor = "red";
+        document.querySelector('.bar2').style.width = this.health * 2 + "px";
+      } else {
+        document.querySelector('.bar2').style.width = this.health * 2 + "px";
+      }
+
       if (this.defenseUsed === true){
           damage = damage/2;
           this.health -= damage;
           this.defenseUsed = false;
+          document.querySelector('.bar2').style.width = this.health * 2 + "px";
       } else {
           this.health -= damage;
+          document.querySelector('.bar2').style.width = this.health * 2 + "px";
       }
+      if (damage > 0){
+        hurt();
+    }
       if (this.health > 0) {
+        // document.querySelector('.bar2').style.width = this.health * 2 + "px";
+        document.querySelector('p').innerText = `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
       } else {
+        document.querySelector('.bar2').style.width =  "0px"; 
+        document.querySelector('p').innerText = `${this.name} has died in act of combat.`;
         return `${this.name} has died in act of combat.`;
       }
   };
@@ -133,26 +118,59 @@ class FinalBoss extends Character {
       if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
           this.defenseCooldownCounter = round + this.defenseCooldown;
           this.defenseUsed = true;
+          document.querySelector('p').innerText = `Final Boss has used Demoralize. He will take half damage in the next round`;
           return `Final Boss has used Demoralize. He will take half damage in the next round`
       }
   }
 }
+
 class Dragon extends Character {
   spell = () => {
       console.log('Breath Fire');
   }
-  defense = (round) => {
+
+  receiveDamage = (enemy, damage) => {
+    if (this.health <= 10) {
+        document.querySelector('.bar2').style.backgroundColor = "red";
+        document.querySelector('.bar2').style.width = this.health * 2 + "px";
+      } else {
+        document.querySelector('.bar2').style.width = this.health * 2 + "px";
+      }
+    if (this.defenseUsed === true){
+        this.defenseUsed = false;
+        document.querySelector('p').innerText = `${enemy.name} has received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
+        return `${enemy.name} has received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
+    } else {
+          this.health -= damage;
+    }
+    if (damage > 0){
+      hurt();
+  }
+    if (this.health > 0) {
+      document.querySelector('.bar2').style.width = this.health * 2 + "px";
+      document.querySelector('p').innerText =`${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`
+      return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
+    } else {
+      document.querySelector('.bar2').style.width =  "0px"; 
+      let lich = this;
+      setTimeout(function() { document.querySelector('p').innerText = `${lich.name} has died in act of combat.`},3000);
+      return `${this.name} has died in act of combat.`;
+    }
+};
+
+defense = (round) => {
+    
       if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
           this.defenseCooldownCounter = round + this.defenseCooldown;
-          this.health += 10;
-          document.querySelector('p').innerText = `'Grunt has used heal. His health is now ${this.health}`
-          return `'Grunt has used heal. His health is now ${this.health}`
+          this.defenseUsed = true;
+        //   document.querySelector('.bar2').style.width =  ;
+          setTimeout(function() {document.querySelector('p').innerText = `Dragon has used Mirror Image. Enemy will take their own damage`},3000);
+          return `Dragon has used Mirror Image. Enemy will take their own damage`
       }
   }
 }
 
-
-class Grunt extends Character {
+class Lich extends Character {
   spell = () => {
     console.log('Scream')
   }
@@ -177,72 +195,46 @@ class Grunt extends Character {
                 document.querySelector('.bar2').style.width = this.health * 2 + "px";
               }
       }
+      if (damage > 0){
+        hurt();
+    }
       if (this.health > 0) {
+        document.querySelector('.bar2').style.width = this.health * 2 + "px";
         document.querySelector('p').innerText =`${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
       } else {
         document.querySelector('.bar2').style.width =  "0px"; 
-        let grunt = this;
-        setTimeout(function() { document.querySelector('p').innerText = `${grunt.name} has died in act of combat.`},3000);
+        let lich = this;
+        setTimeout(function() { document.querySelector('p').innerText = `${lich.name} has died in act of combat.`},3000);
         return `${this.name} has died in act of combat.`;
       }
   };
-  
-  // NEED A COOLDOWN ON BOTH COMBATANTS USING DEFENSE BACK TO BACK
   defense = (round) => {
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
-          this.defenseCooldownCounter = round + this.defenseCooldown;
-          this.defenseUsed = true;
-          setTimeout(function() {document.querySelector('p').innerText = `Dragon has used Mirror Image. Enemy will take their own damage`},3000);
-          return `Dragon has used Mirror Image. Enemy will take their own damage`
-      }
-  }
+    if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
+        this.defenseCooldownCounter = round + this.defenseCooldown;
+        this.health += 10;
+        document.querySelector('.bar2').style.width = this.health * 2 + "px";
+        document.querySelector('p').innerText = `'Lich has used heal. His health is now ${this.health}`
+        return `'Lich has used heal. His health is now ${this.health}`
+    }
+}
+  // NEED A COOLDOWN ON BOTH COMBATANTS USING DEFENSE BACK TO BACK
+  
 }
 
-/*class IceWoman extends Character {
-  spell = () => {
-      console.log('Ice Bolt')
-  }
-  receiveDamage = (enemy, damage) => {
-      if (this.defenseUsed === true){
-          damage = 0;
-          this.health -= damage;
-          this.defenseUsed = false;
-      } else {
-          this.health -= damage;
-      }
-      if (this.health > 0) {
-        return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
-      } else {
-        return `${this.name} has died in act of combat.`;
-      }
-  };
-  defense = (round) => {
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
-          this.defenseCooldownCounter = round + this.defenseCooldown;
-          this.defenseUsed = true;
-          return `Ice Woman has used Freeze. She haults incoming damage in the next round`
-      }
-  }
-}*/ 
 
 let warrior = new Warrior('Warrior', 12, 6, 130, 2, 2);
-//let mage = new Mage('Mage', 6, 12, 80, 0, 2);
-//let rogue = new Rogue('Rogue', 9, 9, 90, 3, 2);
-let finalBoss = new FinalBoss('Final Boss', 25, 14, 60, 3, 2);
-// let grunt = new Grunt('Grunt', 12, 5, 30, 1, 3);
-let grunt = new Grunt('Grunt', 9, 10, 40, 2, 2);
-//let iceWoman = new IceWoman('Ice Woman', 5, 12, 25, 1 ,2);
+let finalBoss = new FinalBoss('Final Boss', 25, 14, 80, 3, 2);
+let lich = new Lich('lich', 12, 5, 40, 1, 3);
+let dragon = new Dragon('Dragon', 9, 10, 50, 2, 2);
 function fight (hero,enemy) {
 let round = 0;
-//   while (hero.health > 0 && enemy.health > 0) {
     document.querySelectorAll("#attack-list li").forEach(li => 
         li.addEventListener("click", (event) => doFight(event))
     );
     
     
     function doFight(event){
-        console.log(grunt)
         if (hero.health<=0 || enemy.health <=0){
             console.log('Someone has died so will not run anything');
             return
@@ -322,9 +314,36 @@ function func1()
 
 }
 
-// window.onload = fight(warrior, Dragon);
 
-// fight(warrior, Grunt)
+
+function hurt(){
+    opacity=0 //opacity of image
+    var increase=1 //increase opacity indicator
+    var decrease=0 //decrease opacity indicator
+
+    function fade(){
+    if (opacity<0.6&&increase)
+    opacity+=0.05
+    else{
+    increase=0
+    decrease=1
+    }
+    
+    if (opacity>0.3&&decrease)
+    opacity-=0.05
+    else{
+    increase=1
+    decrease=0
+    }
+    
+    document.getElementById('villain').style.opacity=opacity
+    }
+    
+    let interval = setInterval(fade,100);
+    setTimeout(function(){clearInterval(interval);document.getElementById('villain').style.opacity=1},3000);
+}
+
+// window.onload = fight(warrior, lich);
 
 // added 
 

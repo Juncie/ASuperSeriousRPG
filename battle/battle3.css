@@ -30,7 +30,7 @@ ul {
     margin: 0;
     height: 93%;
     border-radius: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 1em
 }
 
 li {
@@ -54,7 +54,7 @@ p {
 }
 
 #villain{
-    width: 50%;
+    width: 38%;
     position: relative;
     left: 34vw;
     overflow: hidden;
@@ -94,7 +94,7 @@ p {
   .bar2 {
     border: 3px solid white;
     background: green;
-    width: 100px;
+    width: 160px;
     height: 10px;
     position: relative;
     transition: width .5s linear;

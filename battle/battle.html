@@ -28,7 +28,11 @@
       <section class="hero">
       </section>
     </section>
-    <div class="battleImgs">
+    <div class="enemy">
+      <div class="health-bar2" data-total="1000" data-value="1000">
+        <h2>Lich</h2>
+        <div class="bar2"></div>
+      </div>
         <img id="villain" src="../assets/enemies/Lich.png" alt="villain front" />
     </div>
     <div class = "combat-box">
@@ -54,4 +58,7 @@
     </div>
   </div>
   <script src='./battle.js'></script>
+  <script>
+    fight(warrior, lich);
+  </script>
 </html>
