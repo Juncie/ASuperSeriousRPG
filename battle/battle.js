@@ -1,5 +1,3 @@
-
-
 class Character {
     constructor(name, strength, spellPower, health, spellCooldown, defenseCooldown) {
         this.name = name,
@@ -40,12 +38,22 @@ class Warrior extends Character {
       if (this.defenseUsed === true){
           let warrior = this;
           this.health -= damage/2;
-          setTimeout(function() { document.querySelector('.bar').style.width = warrior.health + "px";},3000) 
+          if (this.health <= 40) {
+            document.querySelector('.bar').style.backgroundColor = "red";
+            setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
+          } else {
+            setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
+          }
           this.defenseUsed = false;
       } else {
             let warrior = this;
-            setTimeout(function() {document.querySelector('.bar').style.width = warrior.health + "px"; },3000) 
             this.health -= damage;
+            if (this.health <= 40) {
+                document.querySelector('.bar').style.backgroundColor = "red";
+                setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
+              } else {
+                setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
+              }
       }
       if (this.health > 0) {
         let warr = this;
@@ -54,8 +62,8 @@ class Warrior extends Character {
           return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
       } else {        
         
+        setTimeout(function() { document.querySelector('.bar').style.width = "0px";},3000) 
         setTimeout(function() {document.querySelector('p').innerText = `${warr.name} has died in act of combat.`},3000)
-        
         return `${this.name} has died in act of combat.`;
       }
   };
@@ -142,25 +150,39 @@ class Dragon extends Character {
       }
   }
 }
+
+
+let grunMaxhealth = 40;
 class Grunt extends Character {
   spell = () => {
     console.log('Scream')
   }
   receiveDamage = (enemy, damage) => {
       if (this.defenseUsed === true){
-          enemy.health -= damage;
-          document.querySelector('.bar2').style.width = this.health + "px";
+          this.health -= damage;
+          if (this.health <= 10) {
+            document.querySelector('.bar2').style.backgroundColor = "red";
+            document.querySelector('.bar2').style.width = this.health * 2 + "px";
+          } else {
+            document.querySelector('.bar2').style.width = this.health * 2 + "px";
+          }
           this.defenseUsed = false;
           document.querySelector('p').innerText = `${enemy.name} has received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
           return `${enemy.name} has received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
       } else {
             this.health -= damage;
-            document.querySelector('.bar2').style.width = this.health + "px";
+            if (this.health <= 10) {
+                document.querySelector('.bar2').style.backgroundColor = "red";
+                document.querySelector('.bar2').style.width = this.health * 2 + "px";
+              } else {
+                document.querySelector('.bar2').style.width = this.health * 2 + "px";
+              }
       }
       if (this.health > 0) {
         document.querySelector('p').innerText =`${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
       } else {
+        document.querySelector('.bar2').style.width =  "0px"; 
         document.querySelector('p').innerText = `${this.name} has died in act of combat.`
         return `${this.name} has died in act of combat.`;
       }
@@ -298,3 +320,7 @@ function func1()
 }
 
 window.onload = fight(warrior, grunt);
+
+// added 
+
+// document.querySelector('.hit').style.width = "10%";
