@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-body {
-    background: url(../assets/fightBkrd/Forest\ background.png) no-repeat center;
-    /* -webkit-background-size: cover; */
-    /* -moz-background-size: cover; */
-    /* -o-background-size: cover; */
-    background-size: cover;
-    margin: 0;
-}
-
 .combat-box {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.363);
@@ -17,8 +8,6 @@ body {
     bottom: 0;
     color: white;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     font-family: 'Press Start 2P', cursive;
 }
 
@@ -39,9 +28,8 @@ ul {
 }
 
 li {
-    margin: 1em;
+    padding: 1em;
 }
-
 
 
 p{
@@ -54,14 +42,14 @@ p{
     height: 93%;
     border-radius: 1em;
     margin-right: 6px;
-    display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
 }
 
 #villain{
-    position: fixed;
-    right: 36vw;
-    bottom: 10vh;
+    position: relative;
+    left: 34vw;
+    overflow: hidden;
 }
 

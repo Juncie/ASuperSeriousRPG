@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./battle.css">
-    <!-- <style>
+    
+    <style>
       body {
-        background: url(../assets/fightBkrd/Forest\ background.png) no-repeat center;
+        background: url(../assets/fightBkrd/Forest\ background.png) no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
 } 
-  </style> -->
+  </style>
+
 </head>
 <body>
 <header>
@@ -28,12 +32,13 @@
         <img id="villain" src="../assets/enemies/Lich.png" alt="villain front" />
     </div>
     <div class = "combat-box">
+      <audio src="../assets/music/hover sound.mp3"></audio>
     <ul id="attack-list">
-        <li>Attack</li>
-        <li>Spell</li>
-        <li>Defense</li>
+        <li>ATTACK</li>
+        <li>SPELL</li>
+        <li>DEFENSE</li>
     </ul>
-    <p>ATTACK FIRST TO INITIATE THE BATTLE!</p>
+    <p>ATTACK TO INITIATE THE BATTLE!</p>
   </div>
   </main>
   <div class="audio">

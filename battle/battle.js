@@ -10,6 +10,7 @@ class Character {
         this.defenseCooldownCounter = 0,
         this.spellCooldownCounter = 0
     }
+    
     // receiveDamage = (enemy, damage) => {
     //     this.health -= damage;
     //     if (this.health > 0) {
@@ -18,6 +19,8 @@ class Character {
     //       return `${this.name} has died in act of combat.`;
     //     }
     // };
+
+
     physicalAttack = (enemy) => {
         return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength));
     }
@@ -271,6 +274,9 @@ let round = 0;
 }
 
 let item = document.querySelectorAll('li')
+var audio = document.getElementsByTagName("audio")[0];
+
+
 for(let eachItem of item) {
 
 eachItem.addEventListener("mouseover", func, false);
@@ -278,7 +284,8 @@ eachItem.addEventListener("mouseout", func1, false);
 
 function func()
 {  
-   eachItem.setAttribute("style", "background-color:#fff237a1;")
+   eachItem.setAttribute("style", "background-color:#000000;");
+   audio.play();
 }
 
 function func1()
