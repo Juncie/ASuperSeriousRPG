@@ -210,7 +210,7 @@ class Lich extends Character {
       }
   };
   defense = (round) => {
-    if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
+    if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 2){
         this.defenseCooldownCounter = round + this.defenseCooldown;
         this.health += 10;
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
@@ -294,8 +294,8 @@ let round = 0;
 }
 
 let item = document.querySelectorAll('li')
-var audio = document.getElementsByTagName("audio")[0];
-audio.play();
+var hoverSound = document.getElementsByClassName("hoverSE")[0];
+
 for(let eachItem of item) {
 
 eachItem.addEventListener("mouseover", func, false);
@@ -304,7 +304,7 @@ eachItem.addEventListener("mouseout", func1, false);
 function func()
 {  
    eachItem.setAttribute("style", "background-color:#fff237a1;")
-   audio();
+   hoverSound.play();
 }
 
 function func1()
