@@ -37,7 +37,9 @@ class Warrior extends Character {
 
       if (this.defenseUsed === true){
           let warrior = this;
-          this.health -= damage / 2;
+          console.log(`Original damage ${damage} - Reduced Damage ${damage/2}`)
+          damage = damage / 2
+          this.health -= damage;
           if (this.health <= 40) {
             document.querySelector('.bar').style.backgroundColor = "red";
             setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
@@ -112,12 +114,13 @@ class Dragon extends Character {
   spell = () => {
       console.log('Breath Fire');
   }
-  defense = (round) => {
+
+defense = (round) => {
       if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
           this.defenseCooldownCounter = round + this.defenseCooldown;
-          this.health += 10;
-          document.querySelector('p').innerText = `'Lich has used heal. His health is now ${this.health}`
-          return `'Lich has used heal. His health is now ${this.health}`
+          this.defenseUsed = true;
+          setTimeout(function() {document.querySelector('p').innerText = `Dragon has used Mirror Image. Enemy will take their own damage`},3000);
+          return `Dragon has used Mirror Image. Enemy will take their own damage`
       }
   }
 }
@@ -160,16 +163,16 @@ class Lich extends Character {
         return `${this.name} has died in act of combat.`;
       }
   };
-  
-  // NEED A COOLDOWN ON BOTH COMBATANTS USING DEFENSE BACK TO BACK
   defense = (round) => {
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
-          this.defenseCooldownCounter = round + this.defenseCooldown;
-          this.defenseUsed = true;
-          setTimeout(function() {document.querySelector('p').innerText = `Dragon has used Mirror Image. Enemy will take their own damage`},3000);
-          return `Dragon has used Mirror Image. Enemy will take their own damage`
-      }
-  }
+    if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
+        this.defenseCooldownCounter = round + this.defenseCooldown;
+        this.health += 10;
+        document.querySelector('p').innerText = `'Lich has used heal. His health is now ${this.health}`
+        return `'Lich has used heal. His health is now ${this.health}`
+    }
+}
+  // NEED A COOLDOWN ON BOTH COMBATANTS USING DEFENSE BACK TO BACK
+  
 }
 
 
@@ -185,7 +188,6 @@ let round = 0;
     
     
     function doFight(event){
-        console.log(lich)
         if (hero.health<=0 || enemy.health <=0){
             console.log('Someone has died so will not run anything');
             return
