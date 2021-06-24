@@ -66,7 +66,7 @@ class Warrior extends Character {
       } else {        
         
         setTimeout(function() { document.querySelector('.bar').style.width = "0px";},3000) 
-        setTimeout(function() {document.querySelector('p').innerText = `${warr.name} has died in act of combat.`},3000)
+        document.querySelector('p').innerText = `$You died in act of combat.`
         setTimeout(function() { window.location.replace("../ending/gameOver.html"); }, 6000);
         return `${this.name} has died in act of combat.`;
       }
@@ -111,10 +111,11 @@ class FinalBoss extends Character {
         document.querySelector('p').innerText = `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
       } else {
+        let boss = this;
         document.querySelector('.bar2').style.width =  "0px"; 
         setTimeout(function() { document.querySelector('p').innerText = `${this.name} has died in act of combat.`;},3000);
         setTimeout(function() { window.location.replace("../ending/ending.html"); }, 6000);
-        return `${this.name} has died in act of combat.`;
+        return `${boss.name} has died in act of combat.`;
       }
   };
   defense = (round) => {
@@ -228,7 +229,7 @@ class Lich extends Character {
 }
 
 
-let warrior = new Warrior('Warrior', 12, 6, 140, 2, 2);
+let warrior = new Warrior('Warrior', 12, 6, 10, 2, 2);
 let finalBoss = new FinalBoss('Final Boss', 25, 14, 80, 3, 2);
 let lich = new Lich('lich', 12, 5, 40, 1, 3);
 let dragon = new Dragon('Dragon', 9, 10, 50, 2, 2);
