@@ -1,3 +1,5 @@
+// let soundeffect = new Audio()
+// soundeffect.src="../../assets/music/"
 class Character {
     constructor(name, strength, spellPower, health, spellCooldown, defenseCooldown) {
         this.name = name,
@@ -24,15 +26,18 @@ class Character {
     spellAttack = (enemy, round) => {
         if (this.spellCooldownCounter <= round || this.spellCooldownCounter == 0){
             this.spellCooldownCounter = round + this.spellCooldown;
-            return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength)+1);
+            return enemy.receiveDamage(this, Math.floor(Math.random() * this.spellPower)+1);
         }
     }
 }
 
 class Warrior extends Character {
-  spell = () => {
-      console.log('Toss Axe');
-  }
+  // physicalAttack = () => {
+  //   let slashFX = document.getElementsByClassName('slashFX')
+    
+  //   return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength));
+
+  // }
   receiveDamage = (enemy, damage) => {
 
       if (this.defenseUsed === true){
@@ -154,6 +159,7 @@ class Dragon extends Character {
       document.querySelector('.bar2').style.width =  "0px"; 
       let lich = this;
       setTimeout(function() { document.querySelector('p').innerText = `${lich.name} has died in act of combat.`},3000);
+      setTimeout(function() { window.location.replace("../Assets/Maps/Boss Room/Boss.html"); }, 6000);
       return `${this.name} has died in act of combat.`;
     }
 };
@@ -206,6 +212,7 @@ class Lich extends Character {
         document.querySelector('.bar2').style.width =  "0px"; 
         let lich = this;
         setTimeout(function() { document.querySelector('p').innerText = `${lich.name} has died in act of combat.`},3000);
+        setTimeout(function() { window.location.replace("../Assets/Maps/Cave/cave.html"); }, 6000);
         return `${this.name} has died in act of combat.`;
       }
   };

@@ -22,6 +22,6 @@ window.onkeydown = function (e) {
     console.log(e.key);
     if (e.key === "Enter") {
       console.log('WElCOME TO THE GAME');
-      window.location.href = "../game/index.html";
+      window.location.href = "../Assets/Maps/forest/forest.html";
     }
 }

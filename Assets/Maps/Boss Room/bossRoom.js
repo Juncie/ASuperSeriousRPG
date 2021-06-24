@@ -97,7 +97,7 @@ function draw () {
            newWarrior.h = updatedTileSize
  
            newWarrior.draw();
-           }
+          }
          mapIndex ++;
    }
   }
@@ -132,9 +132,16 @@ let currentPos = defaultPos;
 //  warrior image
 let character = new Image();
 character.src = "../../../images/warrior back.png";
+let characterDown = new Image();
+characterDown.src = "../../../images/warrior_down.png"
+let characterLeft = new Image();
+characterLeft.src = "../../../images/warrior_left.png"
+let characterRight = new Image();
+characterRight.src = "../../../images/warrior.png"
+
 
 // INSTANCES OF CLASSES
-let newWarrior = new Character('Warrior', character, 0, 0, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0);
+let newWarrior = new Character('Warrior', character, 0, 0, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 1.5, .5);
 
 
 function animate() {
@@ -152,6 +159,7 @@ window.onkeydown = function (e) {
   // MOVEMENT OF THE MAIN CHARACTER
   if (e.key === "ArrowLeft") {
     if (layerOneMap[currentPos - 1] === 61) {
+      newWarrior.img = characterLeft;
       currentPos -= 1;
   
      }
@@ -159,6 +167,7 @@ window.onkeydown = function (e) {
   }
   if (e.key === "ArrowRight") {
     if (layerOneMap[currentPos + 1] === 61) {
+      newWarrior.img = characterRight;
       //newWarrior.x += 16;
       currentPos += 1;
       
@@ -167,6 +176,7 @@ window.onkeydown = function (e) {
   }
   if (e.key === "ArrowUp") {
     if (layerOneMap[currentPos - 32] === 61) {
+      newWarrior.img = character;
       currentPos -= 32;
       
      }
@@ -174,8 +184,12 @@ window.onkeydown = function (e) {
   }
   if (e.key === "ArrowDown") {
     if (layerOneMap[currentPos + 32] === 61) {
+      newWarrior.img = characterDown;
       currentPos += 32;
      }
-     // console.log(layerOneMap[currentPos - 32])
+  }
+
+  if (currentPos >= 514 && currentPos <= 540) {
+    window.location.replace("../../../battle/battle3.html");
   }
 };
