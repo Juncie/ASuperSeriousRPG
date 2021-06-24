@@ -166,7 +166,13 @@ class Character {
 //  warrior image
  let character = new Image();
  character.src = "../../../images/warrior.png";
- 
+ let characterDown = new Image();
+ characterDown.src = "../../../images/warrior_down.png"
+ let characterLeft = new Image();
+ characterLeft.src = "../../../images/warrior_left.png"
+ let characterUp = new Image();
+ characterUp.src = "../../../images/warrior_up.png"
+
 // INSTANCES OF CLASSES
  let newWarrior = new Character('Warrior', character, 0, 0, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0, tileSize *1.5, tileSize * 1.5);
  
@@ -186,14 +192,15 @@ class Character {
    // MOVEMENT OF THE MAIN CHARACTER
    if (e.key === "ArrowLeft") {
      if (layerOneMap[currentPos - 1] === 182 || layerOneMap[currentPos - 1] === 183) {
-       currentPos -= 1;
+      newWarrior.img = characterLeft;
+      currentPos -= 1;
   
       }
       console.log(layerOneMap[currentPos + 1])
    }
    if (e.key === "ArrowRight") {
      if (layerOneMap[currentPos + 1] === 182 || layerOneMap[currentPos + 1] === 183) {
-       //newWarrior.x += 16;
+       newWarrior.img = character;
        currentPos += 1;
        
       }
@@ -201,14 +208,16 @@ class Character {
    }
    if (e.key === "ArrowUp") {
      if (layerOneMap[currentPos - 32] === 182 || layerOneMap[currentPos - 32] === 183) {
-       currentPos -= 32;
+      newWarrior.img = characterUp; 
+      currentPos -= 32;
        
       }
       console.log(layerOneMap[currentPos + 32])
    }
    if (e.key === "ArrowDown") {
      if (layerOneMap[currentPos + 32] === 182 || layerOneMap[currentPos + 32] === 183) {
-       currentPos += 32;
+      newWarrior.img = characterDown;
+      currentPos += 32;
       }
       // console.log(layerOneMap[currentPos - 32])
    }
