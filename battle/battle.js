@@ -10,14 +10,14 @@ class Character {
         this.defenseCooldownCounter = 0,
         this.spellCooldownCounter = 0
     }
-    // receiveDamage = (enemy, damage) => {
-    //     this.health -= damage;
-    //     if (this.health > 0) {
-    //       return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. They now have a health of ${this.health}`;
-    //     } else {
-    //       return `${this.name} has died in act of combat.`;
-    //     }
-    // };
+    receiveDamage = (enemy, damage) => {
+        this.health -= damage;
+        if (this.health > 0) {
+          return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. They now have a health of ${this.health}`;
+        } else {
+          return `${this.name} has died in act of combat.`;
+        }
+    };
     physicalAttack = (enemy) => {
         return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength));
     }
@@ -116,13 +116,13 @@ class Dragon extends Character {
       if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
           this.defenseCooldownCounter = round + this.defenseCooldown;
           this.health += 10;
-          document.querySelector('p').innerText = `'Grunt has used heal. His health is now ${this.health}`
-          return `'Grunt has used heal. His health is now ${this.health}`
+          document.querySelector('p').innerText = `'Lich has used heal. His health is now ${this.health}`
+          return `'Lich has used heal. His health is now ${this.health}`
       }
   }
 }
 
-class Grunt extends Character {
+class Lich extends Character {
   spell = () => {
     console.log('Scream')
   }
@@ -155,8 +155,8 @@ class Grunt extends Character {
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
       } else {
         document.querySelector('.bar2').style.width =  "0px"; 
-        let grunt = this;
-        setTimeout(function() { document.querySelector('p').innerText = `${grunt.name} has died in act of combat.`},3000);
+        let lich = this;
+        setTimeout(function() { document.querySelector('p').innerText = `${lich.name} has died in act of combat.`},3000);
         return `${this.name} has died in act of combat.`;
       }
   };
@@ -175,7 +175,7 @@ class Grunt extends Character {
 
 let warrior = new Warrior('Warrior', 12, 6, 130, 2, 2);
 let finalBoss = new FinalBoss('Final Boss', 25, 14, 60, 3, 2);
-let grunt = new Grunt('Grunt', 12, 5, 30, 1, 3);
+let lich = new Lich('lich', 12, 5, 30, 1, 3);
 let dragon = new Dragon('Dragon', 9, 10, 30, 2, 2);
 function fight (hero,enemy) {
 let round = 0;
@@ -185,7 +185,7 @@ let round = 0;
     
     
     function doFight(event){
-        console.log(grunt)
+        console.log(lich)
         if (hero.health<=0 || enemy.health <=0){
             console.log('Someone has died so will not run anything');
             return
@@ -267,9 +267,6 @@ function func1()
 
 
 
-window.onload = fight(warrior, dragon);
-
-
 function hurt(){
     opacity=0 //opacity of image
     var increase=1 //increase opacity indicator
@@ -297,7 +294,7 @@ function hurt(){
     setTimeout(function(){clearInterval(interval);document.getElementById('villain').style.opacity=1},3000);
 }
 
-window.onload = fight(warrior, grunt);
+window.onload = fight(warrior, lich);
 
 // added 
 
