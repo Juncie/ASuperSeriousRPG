@@ -1,8 +1,12 @@
-
+let storySong = new Audio()
+storySong.src = "../Assets/music/Story Song.mp3"
+let Musicplay = false
 
 let counter = 0;
+
 window.onkeydown = function (e) {
     console.log(e.key);
+    storySong.play()
     if (e.key === "Enter") {
       counter++;
       if (counter === 1) {

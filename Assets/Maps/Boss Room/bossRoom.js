@@ -187,6 +187,9 @@ window.onkeydown = function (e) {
       newWarrior.img = characterDown;
       currentPos += 32;
      }
-     // console.log(layerOneMap[currentPos - 32])
+    
   }
+  if (currentPos >= 483 + 32 && currentPos <= 508 + 32 ){
+    window.location.replace("../../../battle/battle3.html");
+   }
 };
