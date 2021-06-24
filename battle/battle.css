@@ -55,10 +55,9 @@ p {
 
 /*  added */
 .health-bar {
-    position: fixed;
+    position: relative;
     color: lightblue;
     border-radius: 5px;
-    position: fixed;
     margin-left: 5%;
     width: 10%;
     font-family: 'Press Start 2P', cursive;
