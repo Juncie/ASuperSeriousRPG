@@ -5,7 +5,7 @@ canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 const ground = new Image();
-ground.src = '../../tilesets/Cave.png'
+ground.src = '../../tileSets/Cave.png'
 
 const tileSize = 16;
 const tileOutputSize = 1.8;
