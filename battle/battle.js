@@ -31,13 +31,9 @@ class Character {
     }
 }
 
-class Warrior extends Character {
-  // physicalAttack = () => {
-  //   let slashFX = document.getElementsByClassName('slashFX')
-    
-  //   return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength));
 
-  // }
+class Warrior extends Character {
+
   receiveDamage = (enemy, damage) => {
 
       if (this.defenseUsed === true){
@@ -45,7 +41,7 @@ class Warrior extends Character {
           console.log(`Original damage ${damage} - Reduced Damage ${damage/2}`)
           damage = damage / 2
           this.health -= damage;
-          if (this.health <= 40) {
+          if (this.health <= 28) {
             document.querySelector('.bar').style.backgroundColor = "red";
             setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
           } else {
@@ -55,7 +51,7 @@ class Warrior extends Character {
       } else {
             let warrior = this;
             this.health -= damage;
-            if (this.health <= 40) {
+            if (this.health <= 28) {
                 document.querySelector('.bar').style.backgroundColor = "red";
                 setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
               } else {
@@ -70,7 +66,8 @@ class Warrior extends Character {
       } else {        
         
         setTimeout(function() { document.querySelector('.bar').style.width = "0px";},3000) 
-        setTimeout(function() {document.querySelector('p').innerText = `${warr.name} has died in act of combat.`},3000)
+        document.querySelector('p').innerText = `You died in act of combat.`
+        setTimeout(function() { window.location.replace("../ending/gameOver.html"); }, 6000);
         return `${this.name} has died in act of combat.`;
       }
   };
@@ -90,7 +87,7 @@ class FinalBoss extends Character {
       console.log('Siphon Soul')
   }
   receiveDamage = (enemy, damage) => {
-    if (this.health <= 10) {
+    if (this.health <= 16) {
         document.querySelector('.bar2').style.backgroundColor = "red";
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
       } else {
@@ -114,10 +111,15 @@ class FinalBoss extends Character {
         document.querySelector('p').innerText = `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
       } else {
+<<<<<<< HEAD
         dead();
+=======
+        let boss = this;
+>>>>>>> 74ce2f967c32185af47a946687536053043ca920
         document.querySelector('.bar2').style.width =  "0px"; 
-        document.querySelector('p').innerText = `${this.name} has died in act of combat.`;
-        return `${this.name} has died in act of combat.`;
+        setTimeout(function() { document.querySelector('p').innerText = `Boss has died in act of combat.`;},3000);
+        setTimeout(function() { window.location.replace("../ending/ending.html"); }, 6000);
+        return `${boss.name} has died in act of combat.`;
       }
   };
   defense = (round) => {
@@ -136,7 +138,7 @@ class Dragon extends Character {
   }
 
   receiveDamage = (enemy, damage) => {
-    if (this.health <= 10) {
+    if (this.health <= 12) {
         document.querySelector('.bar2').style.backgroundColor = "red";
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
       } else {
@@ -233,10 +235,10 @@ class Lich extends Character {
 }
 
 
-let warrior = new Warrior('Warrior', 12, 6, 130, 2, 2);
+let warrior = new Warrior('Warrior', 12, 6, 140, 2, 2);
 let finalBoss = new FinalBoss('Final Boss', 25, 14, 80, 3, 2);
-let lich = new Lich('lich', 12, 5, 40, 1, 3);
-let dragon = new Dragon('Dragon', 9, 10, 50, 2, 2);
+let lich = new Lich('lich', 12, 5, 50, 1, 3);
+let dragon = new Dragon('Dragon', 9, 10, 60, 2, 2);
 function fight (hero,enemy) {
 let round = 0;
     document.querySelectorAll("#attack-list li").forEach(li => 

@@ -5,7 +5,7 @@
 h1 {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
-    font-size: 60px;
+    font-size: 3vw;
     color: #f35626;
     background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
     -webkit-background-clip: text;
@@ -24,6 +24,7 @@ h1 {
 }
 
 body {
+    background-color: black;
     display: flex;
     justify-content: center;
 }

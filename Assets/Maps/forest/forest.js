@@ -229,7 +229,7 @@ function animate() {
       }
       // console.log(layerOneMap[currentPos - 32])
    }
-   if (currentPos === 145 || currentPos === 146) {
+   if (currentPos === 146  || currentPos === 147) {
     window.location.replace("../../../battle/battle.html");
    }
  };
