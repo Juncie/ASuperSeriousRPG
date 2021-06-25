@@ -243,7 +243,7 @@ class Lich extends Character {
 
 
 let warrior = new Warrior('Warrior', 13, 10, 140, 2, 2);
-let finalBoss = new FinalBoss('Final Boss', 25, 14, 1, 3, 2);
+let finalBoss = new FinalBoss('Final Boss', 25, 14, 100, 3, 2);
 let lich = new Lich('lich', 11, 15, 70, 1, 3);
 let dragon = new Dragon('Dragon', 14, 10, 85, 2, 2);
 
