@@ -111,11 +111,8 @@ class FinalBoss extends Character {
         document.querySelector('p').innerText = `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
       } else {
-<<<<<<< HEAD
         dead();
-=======
         let boss = this;
->>>>>>> 74ce2f967c32185af47a946687536053043ca920
         document.querySelector('.bar2').style.width =  "0px"; 
         setTimeout(function() { document.querySelector('p').innerText = `Boss has died in act of combat.`;},3000);
         setTimeout(function() { window.location.replace("../ending/ending.html"); }, 6000);
