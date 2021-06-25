@@ -1,5 +1,10 @@
 let slasheff = new Audio()
 slasheff.src="../Assets/music/physical attack.mp3"
+let warriorDef = new Audio()
+warriorDef.src="../Assets/music/Warrior Defense.mp3"
+let warriorSpell = new Audio()
+warriorSpell.src="../Assets/music/Warrior Spell.mp3"
+
 
 let fightMusic = new Audio()
 fightMusic.src = "" 
@@ -289,7 +294,11 @@ function fight (hero,enemy) {
         doFight(event)   
         if (li.innerText === 'ATTACK'){
           slasheff.play()
-      } 
+      } else if (li.innerText === 'SPELL') {
+          warriorSpell.play()
+      } else if (li.innerText === 'DEFENSE') {
+          warriorDef.play()
+      }
       })
     }  
     );
