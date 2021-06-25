@@ -46,10 +46,6 @@ class Character {
 
 
 class Warrior extends Character {
-<<<<<<< HEAD
-=======
-
->>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
   receiveDamage = (enemy, damage) => {
 
       if (this.defenseUsed === true){
@@ -82,15 +78,9 @@ class Warrior extends Character {
       } else {        
         
         setTimeout(function() { document.querySelector('.bar').style.width = "0px";},3000) 
-<<<<<<< HEAD
         setTimeout(function() {document.querySelector('p').innerText = `You died in act of combat.`},1000)
         setTimeout(function() { window.location.replace("Game Over.html"); }, 4000);
         return `${this.name} has been slain!.`;
-=======
-        document.querySelector('p').innerText = `You died in act of combat.`
-        setTimeout(function() { window.location.replace("../ending/gameOver.html"); }, 6000);
-        return `${this.name} has died in act of combat.`;
->>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
       }
   };
   defense = (round) => {
@@ -137,11 +127,7 @@ class FinalBoss extends Character {
         let boss = this;
         document.querySelector('.bar2').style.width =  "0px"; 
         setTimeout(function() { document.querySelector('p').innerText = `Boss has died in act of combat.`;},3000);
-<<<<<<< HEAD
         setTimeout(function() { window.location.replace("../battle/Good ending.html"); }, 6000);
-=======
-        setTimeout(function() { window.location.replace("../ending/ending.html"); }, 6000);
->>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
         return `${boss.name} has died in act of combat.`;
       }
   };
@@ -256,18 +242,11 @@ class Lich extends Character {
 }
 
 
-<<<<<<< HEAD
 let warrior = new Warrior('Warrior', 13, 10, 140, 2, 2);
 let finalBoss = new FinalBoss('Final Boss', 25, 14, 1, 3, 2);
 let lich = new Lich('lich', 11, 15, 70, 1, 3);
 let dragon = new Dragon('Dragon', 14, 10, 85, 2, 2);
 
-=======
-let warrior = new Warrior('Warrior', 12, 6, 140, 2, 2);
-let finalBoss = new FinalBoss('Final Boss', 25, 14, 80, 3, 2);
-let lich = new Lich('lich', 12, 5, 50, 1, 3);
-let dragon = new Dragon('Dragon', 9, 10, 60, 2, 2);
->>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
 function fight (hero,enemy) {
 
   let round = 0;
@@ -395,12 +374,3 @@ function hurt(){
   function dead() {
    document.getElementById('villain').style.display = 'none';
   }
-<<<<<<< HEAD
-=======
-
-// window.onload = fight(warrior, lich);
-
-// added 
-
-// document.querySelector('.hit').style.width = "10%";
->>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
