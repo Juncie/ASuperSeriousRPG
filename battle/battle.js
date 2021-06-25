@@ -114,6 +114,7 @@ class FinalBoss extends Character {
         document.querySelector('p').innerText = `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
       } else {
+        dead();
         document.querySelector('.bar2').style.width =  "0px"; 
         document.querySelector('p').innerText = `${this.name} has died in act of combat.`;
         return `${this.name} has died in act of combat.`;
@@ -156,6 +157,7 @@ class Dragon extends Character {
       document.querySelector('p').innerText =`${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`
       return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
     } else {
+      dead();
       document.querySelector('.bar2').style.width =  "0px"; 
       let lich = this;
       setTimeout(function() { document.querySelector('p').innerText = `${lich.name} has died in act of combat.`},3000);
@@ -203,12 +205,13 @@ class Lich extends Character {
       }
       if (damage > 0){
         hurt();
-    }
+      } 
       if (this.health > 0) {
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
         document.querySelector('p').innerText =`${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`
         return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
       } else {
+        dead();
         document.querySelector('.bar2').style.width =  "0px"; 
         let lich = this;
         setTimeout(function() { document.querySelector('p').innerText = `${lich.name} has died in act of combat.`},3000);
@@ -349,6 +352,10 @@ function hurt(){
     let interval = setInterval(fade,100);
     setTimeout(function(){clearInterval(interval);document.getElementById('villain').style.opacity=1},3000);
 }
+
+  function dead() {
+   document.getElementById('villain').style.display = 'none';
+  }
 
 // window.onload = fight(warrior, lich);
 
