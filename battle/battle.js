@@ -1,8 +1,8 @@
 let slasheff = new Audio()
 slasheff.src="../Assets/music/physical attack.mp3"
 
-let bkrdMusic = new Audio()
-bkrdMusic.src = "" 
+let fightMusic = new Audio()
+fightMusic.src = "" 
 let Musicplay = false
 
 //PLACE INSIDE OF A FUNCTION
@@ -47,7 +47,6 @@ class Character {
 
 class Warrior extends Character {
   receiveDamage = (enemy, damage) => {
-
       if (this.defenseUsed === true){
           let warrior = this;
           console.log(`Original damage ${damage} - Reduced Damage ${damage/2}`)
