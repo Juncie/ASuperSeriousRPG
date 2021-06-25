@@ -66,7 +66,7 @@ class Warrior extends Character {
       } else {        
         
         setTimeout(function() { document.querySelector('.bar').style.width = "0px";},3000) 
-        document.querySelector('p').innerText = `$You died in act of combat.`
+        document.querySelector('p').innerText = `You died in act of combat.`
         setTimeout(function() { window.location.replace("../ending/gameOver.html"); }, 6000);
         return `${this.name} has died in act of combat.`;
       }
