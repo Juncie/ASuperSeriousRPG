@@ -1,6 +1,17 @@
 let slasheff = new Audio()
-slasheff.src="../../assets/music/"
-let Musicplay = false;
+slasheff.src="../Assets/music/physical attack.mp3"
+
+let bkrdMusic = new Audio()
+bkrdMusic.src = "" 
+let Musicplay = false
+
+//PLACE INSIDE OF A FUNCTION
+// if(!Musicplay){
+//   console.log(Musicplay)
+//   bkrdMusic.play()
+//   Musicplay = true;
+// }
+
 
 class Character {
     constructor(name, strength, spellPower, health, spellCooldown, defenseCooldown) {
@@ -35,21 +46,6 @@ class Character {
 
 
 class Warrior extends Character {
-<<<<<<< HEAD
-  physicalAttack = (enemy) => {
-    if(!slasheff){
-      console.log(slasheff)
-      slasheff.play()
-      slasheff = true;
-    }
-    
-    return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength));
-    
-
-  }
-=======
-
->>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
   receiveDamage = (enemy, damage) => {
 
       if (this.defenseUsed === true){
@@ -82,15 +78,9 @@ class Warrior extends Character {
       } else {        
         
         setTimeout(function() { document.querySelector('.bar').style.width = "0px";},3000) 
-<<<<<<< HEAD
-        setTimeout(function() {document.querySelector('p').innerText = `${warr.name} died in act of combat.`},1000)
+        setTimeout(function() {document.querySelector('p').innerText = `You died in act of combat.`},1000)
         setTimeout(function() { window.location.replace("Game Over.html"); }, 4000);
         return `${this.name} has been slain!.`;
-=======
-        document.querySelector('p').innerText = `You died in act of combat.`
-        setTimeout(function() { window.location.replace("../ending/gameOver.html"); }, 6000);
-        return `${this.name} has died in act of combat.`;
->>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
       }
   };
   defense = (round) => {
@@ -136,14 +126,9 @@ class FinalBoss extends Character {
         dead();
         let boss = this;
         document.querySelector('.bar2').style.width =  "0px"; 
-<<<<<<< HEAD
-        document.querySelector('p').innerText = `${this.name} died in act of combat.`;
-        return `${this.name} died in act of combat.`;
-=======
         setTimeout(function() { document.querySelector('p').innerText = `Boss has died in act of combat.`;},3000);
-        setTimeout(function() { window.location.replace("../ending/ending.html"); }, 6000);
+        setTimeout(function() { window.location.replace("../battle/Good ending.html"); }, 6000);
         return `${boss.name} has died in act of combat.`;
->>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
       }
   };
   defense = (round) => {
@@ -249,31 +234,31 @@ class Lich extends Character {
         this.defenseCooldownCounter = round + this.defenseCooldown;
         this.health += 10;
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
-        document.querySelector('p').innerText = `'Lich used heal. His health is now ${this.health}`
-        return `'Lich used heal. His health is now ${this.health}`
+        document.querySelector('p').innerText = `Lich used heal. His health is now ${this.health}`
+        return `Lich used heal! His health is now ${this.health}`
     }
 }
   
 }
 
 
-<<<<<<< HEAD
 let warrior = new Warrior('Warrior', 13, 10, 140, 2, 2);
-let finalBoss = new FinalBoss('Final Boss', 25, 14, 100, 3, 2);
+let finalBoss = new FinalBoss('Final Boss', 25, 14, 1, 3, 2);
 let lich = new Lich('lich', 11, 15, 70, 1, 3);
-let dragon = new Dragon('Dragon', 14, 10, 80, 2, 2);
+let dragon = new Dragon('Dragon', 14, 10, 85, 2, 2);
 
-=======
-let warrior = new Warrior('Warrior', 12, 6, 140, 2, 2);
-let finalBoss = new FinalBoss('Final Boss', 25, 14, 80, 3, 2);
-let lich = new Lich('lich', 12, 5, 50, 1, 3);
-let dragon = new Dragon('Dragon', 9, 10, 60, 2, 2);
->>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
 function fight (hero,enemy) {
 
   let round = 0;
-    document.querySelectorAll("#attack-list li").forEach(li => 
-        li.addEventListener("click", (event) => doFight(event))
+    document.querySelectorAll("#attack-list li").forEach(function (li) {
+      li.addEventListener("click", function (event) {
+        doFight(event)   
+        if (li.innerText === 'ATTACK'){
+          slasheff.play()
+  
+      } 
+      })
+    }  
     );
     
     
