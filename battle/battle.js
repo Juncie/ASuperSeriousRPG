@@ -7,28 +7,28 @@ warriorSpell.src="../Assets/music/Warrior Spell.mp3"
 
 
 let fightMusic = new Audio()
-fightMusic.src = "" 
+fightMusic.src = "  " 
 let Musicplay = false
 
 // Attack sounds
 let bossAtack = new Audio()
-bossAtack.src = "../assets/music/Boss Attack (mp3cut.net).mp3";
+bossAtack.src = "../Assets/music/Boss Attack (mp3cut.net).mp3";
 
 let dragonAtack = new Audio()
-dragonAtack.src = "../assets/music/Dragon Attack.mp3";
+dragonAtack.src = "../Assets/music/Dragon Attack.mp3";
 
 let lichAtack = new Audio()
-lichAtack.src = "../assets/music/Lich attack.mp3"
+lichAtack.src = "../Assets/music/Lich attack.mp3"
 
 // Spell sounds
 let bossSpell = new Audio()
-bossSpell.src = '../assets/music/Boss Spell.mp3'
+bossSpell.src = '../Assets/music/Boss Spell.mp3'
 
 let dragonSpell = new Audio()
-dragonSpell.src = '../assets/music/Dragon Spell.mp3'
+dragonSpell.src = '../Assets/music/Dragon Spell.mp3'
 
 let lichSpell = new Audio()
-lichSpell.src = '../assets/music/Lich Spell (mp3cut.net).mp3'
+lichSpell.src = '../Assets/music/Lich Spell (mp3cut.net).mp3'
 
 
 
