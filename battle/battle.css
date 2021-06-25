@@ -92,7 +92,11 @@ p {
   .bar2 {
     border: 3px solid white;
     background: green;
+<<<<<<< HEAD
     width: 140px;
+=======
+    width: 100px;
+>>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
     height: 10px;
     position: relative;
     transition: width .5s linear;
