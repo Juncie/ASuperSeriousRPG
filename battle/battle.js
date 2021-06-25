@@ -41,7 +41,7 @@ class Warrior extends Character {
           console.log(`Original damage ${damage} - Reduced Damage ${damage/2}`)
           damage = damage / 2
           this.health -= damage;
-          if (this.health <= 40) {
+          if (this.health <= 28) {
             document.querySelector('.bar').style.backgroundColor = "red";
             setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
           } else {
@@ -51,7 +51,7 @@ class Warrior extends Character {
       } else {
             let warrior = this;
             this.health -= damage;
-            if (this.health <= 40) {
+            if (this.health <= 28) {
                 document.querySelector('.bar').style.backgroundColor = "red";
                 setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
               } else {
@@ -87,7 +87,7 @@ class FinalBoss extends Character {
       console.log('Siphon Soul')
   }
   receiveDamage = (enemy, damage) => {
-    if (this.health <= 10) {
+    if (this.health <= 16) {
         document.querySelector('.bar2').style.backgroundColor = "red";
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
       } else {
@@ -134,7 +134,7 @@ class Dragon extends Character {
   }
 
   receiveDamage = (enemy, damage) => {
-    if (this.health <= 10) {
+    if (this.health <= 12) {
         document.querySelector('.bar2').style.backgroundColor = "red";
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
       } else {
@@ -231,8 +231,8 @@ class Lich extends Character {
 
 let warrior = new Warrior('Warrior', 12, 6, 140, 2, 2);
 let finalBoss = new FinalBoss('Final Boss', 25, 14, 80, 3, 2);
-let lich = new Lich('lich', 12, 5, 40, 1, 3);
-let dragon = new Dragon('Dragon', 9, 10, 50, 2, 2);
+let lich = new Lich('lich', 12, 5, 50, 1, 3);
+let dragon = new Dragon('Dragon', 9, 10, 60, 2, 2);
 function fight (hero,enemy) {
 let round = 0;
     document.querySelectorAll("#attack-list li").forEach(li => 
