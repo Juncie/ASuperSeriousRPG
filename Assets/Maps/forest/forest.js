@@ -156,7 +156,7 @@ class Character {
    }
  
    draw = () => {
-     ctx.drawImage(this.img, this.sx, this.sy, 50, 65, this.x, this.y, this.w, this.h);
+     ctx.drawImage(this.img, this.sx, this.sy, 50, 62, this.x, this.y, this.w, this.h);
    }
  }
  
