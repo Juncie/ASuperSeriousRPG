@@ -5,11 +5,6 @@ warriorDef.src="../Assets/music/Warrior Defense.mp3"
 let warriorSpell = new Audio()
 warriorSpell.src="../Assets/music/Warrior Spell.mp3"
 
-
-let fightMusic = new Audio()
-fightMusic.src = "  " 
-let Musicplay = false
-
 // Attack sounds
 let bossAtack = new Audio()
 bossAtack.src = "../Assets/music/Boss Attack (mp3cut.net).mp3";
@@ -33,13 +28,6 @@ lichSpell.src = '../Assets/music/Lich Spell (mp3cut.net).mp3'
 
 
 
-
-//PLACE INSIDE OF A FUNCTION
-// if(!Musicplay){
-//   console.log(Musicplay)
-//   bkrdMusic.play()
-//   Musicplay = true;
-// }
 
 
 class Character {
@@ -269,7 +257,7 @@ class Lich extends Character {
   };
   defense = (round) => {
     lichSpell.play();
-    if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 2){
+    if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 3){
         this.defenseCooldownCounter = round + this.defenseCooldown;
         this.health += 10;
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
@@ -283,7 +271,7 @@ class Lich extends Character {
 
 let warrior = new Warrior('Warrior', 13, 10, 140, 2, 2);
 let finalBoss = new FinalBoss('Final Boss', 25, 14, 100, 3, 2);
-let lich = new Lich('lich', 11, 15, 70, 1, 3);
+let lich = new Lich('lich', 11, 10, 70, 1, 3);
 let dragon = new Dragon('Dragon', 14, 10, 85, 2, 2);
 
 function fight (hero,enemy) {
