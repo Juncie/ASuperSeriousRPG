@@ -1,5 +1,7 @@
-// let soundeffect = new Audio()
-// soundeffect.src="../../assets/music/"
+let slasheff = new Audio()
+slasheff.src="../../assets/music/"
+let Musicplay = false;
+
 class Character {
     constructor(name, strength, spellPower, health, spellCooldown, defenseCooldown) {
         this.name = name,
@@ -15,9 +17,9 @@ class Character {
     receiveDamage = (enemy, damage) => {
         this.health -= damage;
         if (this.health > 0) {
-          return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. They now have a health of ${this.health}`;
+          return `${this.name} received ${damage} point(s) of damage from ${enemy.name}. They now have a health of ${this.health}`;
         } else {
-          return `${this.name} has died in act of combat.`;
+          return `${this.name} died in act of combat.`;
         }
     };
     physicalAttack = (enemy) => {
@@ -33,12 +35,17 @@ class Character {
 
 
 class Warrior extends Character {
-  // physicalAttack = () => {
-  //   let slashFX = document.getElementsByClassName('slashFX')
+  physicalAttack = (enemy) => {
+    if(!slasheff){
+      console.log(slasheff)
+      slasheff.play()
+      slasheff = true;
+    }
     
-  //   return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength));
+    return enemy.receiveDamage(this, Math.floor(Math.random() * this.strength));
+    
 
-  // }
+  }
   receiveDamage = (enemy, damage) => {
 
       if (this.defenseUsed === true){
@@ -65,22 +72,23 @@ class Warrior extends Character {
       }
       if (this.health > 0) {
         let warr = this;
-         setTimeout(function() { document.querySelector('p').innerText = `${warr.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${warr.health}`;},3000) 
+         setTimeout(function() { document.querySelector('p').innerText = `${warr.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${warr.health}`;},3000) 
         
-          return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
+          return `${this.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${this.health}`;
       } else {        
         
         setTimeout(function() { document.querySelector('.bar').style.width = "0px";},3000) 
-        setTimeout(function() {document.querySelector('p').innerText = `${warr.name} has died in act of combat.`},3000)
-        return `${this.name} has died in act of combat.`;
+        setTimeout(function() {document.querySelector('p').innerText = `${warr.name} died in act of combat.`},1000)
+        setTimeout(function() { window.location.replace("Game Over.html"); }, 4000);
+        return `${this.name} has been slain!.`;
       }
   };
   defense = (round) => {
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
+      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 1){
           this.defenseCooldownCounter = round + this.defenseCooldown;
           this.defenseUsed = true;
-         document.querySelector('p').innerText = `Warrior raised shield, he will receive half damage on the next attack`
-          return `Warrior raised shield, he will receive half damage on the next attack`
+         document.querySelector('p').innerText = `Warrior raised his shield! He will receive half damage on the next attack!`
+          return `Warrior raised his shield! He will receive half damage on the next attack!`
       }
   }
 }
@@ -112,20 +120,20 @@ class FinalBoss extends Character {
     }
       if (this.health > 0) {
         // document.querySelector('.bar2').style.width = this.health * 2 + "px";
-        document.querySelector('p').innerText = `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
-        return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. He now has a health of ${this.health}`;
+        document.querySelector('p').innerText = `${this.name} received ${damage} point(s) of damage from ${enemy.name}. He now a health of ${this.health}`;
+        return `${this.name} received ${damage} point(s) of damage from ${enemy.name}. He now a health of ${this.health}`;
       } else {
         document.querySelector('.bar2').style.width =  "0px"; 
-        document.querySelector('p').innerText = `${this.name} has died in act of combat.`;
-        return `${this.name} has died in act of combat.`;
+        document.querySelector('p').innerText = `${this.name} died in act of combat.`;
+        return `${this.name} died in act of combat.`;
       }
   };
   defense = (round) => {
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
+      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 2){
           this.defenseCooldownCounter = round + this.defenseCooldown;
           this.defenseUsed = true;
-          document.querySelector('p').innerText = `Final Boss has used Demoralize. He will take half damage in the next round`;
-          return `Final Boss has used Demoralize. He will take half damage in the next round`
+          document.querySelector('p').innerText = `Final Boss used Demoralize! He will take half damage in the next round.`;
+          return `Final Boss used Demoralize! His damage taken is halved for 1 turn!`
       }
   }
 }
@@ -144,8 +152,8 @@ class Dragon extends Character {
       }
     if (this.defenseUsed === true){
         this.defenseUsed = false;
-        document.querySelector('p').innerText = `${enemy.name} has received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
-        return `${enemy.name} has received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
+        document.querySelector('p').innerText = `${enemy.name} received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
+        return `${enemy.name} received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
     } else {
           this.health -= damage;
     }
@@ -154,25 +162,24 @@ class Dragon extends Character {
   }
     if (this.health > 0) {
       document.querySelector('.bar2').style.width = this.health * 2 + "px";
-      document.querySelector('p').innerText =`${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`
-      return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
+      document.querySelector('p').innerText =`${this.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${this.health}`
+      return `${this.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${this.health}`;
     } else {
       document.querySelector('.bar2').style.width =  "0px"; 
-      let lich = this;
-      setTimeout(function() { document.querySelector('p').innerText = `${lich.name} has died in act of combat.`},3000);
-      setTimeout(function() { window.location.replace("../Assets/Maps/Boss Room/Boss.html"); }, 6000);
-      return `${this.name} has died in act of combat.`;
+      let dragon = this;                                        
+      setTimeout(function() { document.querySelector('p').innerText = `${dragon.name} died in act of combat.`},3000);
+      setTimeout(function() { window.location.replace("../Assets/Maps/Boss Room/Boss.html"); }, 4000);
+      return `${this.name} died in act of combat.`;
     }
 };
 
 defense = (round) => {
     
-      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 0){
+      if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 2){
           this.defenseCooldownCounter = round + this.defenseCooldown;
           this.defenseUsed = true;
-        //   document.querySelector('.bar2').style.width =  ;
-          setTimeout(function() {document.querySelector('p').innerText = `Dragon has used Mirror Image. Enemy will take their own damage`},3000);
-          return `Dragon has used Mirror Image. Enemy will take their own damage`
+          setTimeout(function() {document.querySelector('p').innerText = `Dragon used Mirror Image. Enemy will take their own damage`},3000);
+          return `Dragon used Mirror Image. Enemy will take their own damage`
       }
   }
 }
@@ -191,8 +198,8 @@ class Lich extends Character {
             document.querySelector('.bar2').style.width = this.health * 2 + "px";
           }
           this.defenseUsed = false;
-          document.querySelector('p').innerText = `${enemy.name} has received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
-          return `${enemy.name} has received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
+          document.querySelector('p').innerText = `${enemy.name} received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
+          return `${enemy.name} received ${damage} point(s) of damage from their own attack! They now have a health of ${enemy.health}`
       } else {
             this.health -= damage;
             if (this.health <= 10) {
@@ -207,14 +214,14 @@ class Lich extends Character {
     }
       if (this.health > 0) {
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
-        document.querySelector('p').innerText =`${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`
-        return `${this.name} has received ${damage} point(s) of damage from ${enemy.name}. Now he has a health of ${this.health}`;
+        document.querySelector('p').innerText =`${this.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${this.health}`
+        return `${this.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${this.health}`;
       } else {
         document.querySelector('.bar2').style.width =  "0px"; 
         let lich = this;
-        setTimeout(function() { document.querySelector('p').innerText = `${lich.name} has died in act of combat.`},3000);
-        setTimeout(function() { window.location.replace("../Assets/Maps/Cave/cave.html"); }, 6000);
-        return `${this.name} has died in act of combat.`;
+        setTimeout(function() { document.querySelector('p').innerText = `${lich.name} died in act of combat.`},1000);
+        setTimeout(function() { window.location.replace("../Assets/Maps/Cave/cave.html"); }, 4000);
+        return `${this.name} died in act of combat.`;
       }
   };
   defense = (round) => {
@@ -222,21 +229,22 @@ class Lich extends Character {
         this.defenseCooldownCounter = round + this.defenseCooldown;
         this.health += 10;
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
-        document.querySelector('p').innerText = `'Lich has used heal. His health is now ${this.health}`
-        return `'Lich has used heal. His health is now ${this.health}`
+        document.querySelector('p').innerText = `'Lich used heal. His health is now ${this.health}`
+        return `'Lich used heal. His health is now ${this.health}`
     }
 }
-  // NEED A COOLDOWN ON BOTH COMBATANTS USING DEFENSE BACK TO BACK
   
 }
 
 
-let warrior = new Warrior('Warrior', 12, 6, 140, 2, 2);
-let finalBoss = new FinalBoss('Final Boss', 25, 14, 80, 3, 2);
-let lich = new Lich('lich', 12, 5, 40, 1, 3);
-let dragon = new Dragon('Dragon', 9, 10, 50, 2, 2);
+let warrior = new Warrior('Warrior', 14, 10, 150, 2, 2);
+let finalBoss = new FinalBoss('Final Boss', 6000000, 14, 100, 3, 2);
+let lich = new Lich('lich', 11, 15, 70, 1, 3);
+let dragon = new Dragon('Dragon', 14, 10, 80, 2, 2);
+
 function fight (hero,enemy) {
-let round = 0;
+
+  let round = 0;
     document.querySelectorAll("#attack-list li").forEach(li => 
         li.addEventListener("click", (event) => doFight(event))
     );
@@ -244,7 +252,7 @@ let round = 0;
     
     function doFight(event){
         if (hero.health<=0 || enemy.health <=0){
-            console.log('Someone has died so will not run anything');
+            console.log('Someone died so will not run anything');
             return
         } 
         console.log(round);
@@ -350,9 +358,3 @@ function hurt(){
     let interval = setInterval(fade,100);
     setTimeout(function(){clearInterval(interval);document.getElementById('villain').style.opacity=1},3000);
 }
-
-// window.onload = fight(warrior, lich);
-
-// added 
-
-// document.querySelector('.hit').style.width = "10%";

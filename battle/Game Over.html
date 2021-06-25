@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+    
+    body{
+        background-color: black;
+        overflow:hidden;
+    }
+    
+    p {
+    font-size: 10vw;
+    color: white;
+    text-align: center;
+    position: relative;
+    top: 25vh;
+    font-family: 'Press Start 2P';
+    animation: textzoom 1.5s alternate infinite ease-in;
+    }
+    @keyframes textzoom {
+        from {transform: scale(.8);}
+        to{transform: scale(1);}
+    }
+    h4{
+        color: white;
+        position: relative;
+        top: 25vh;
+        left: 45vw;
+    }
+    h5{
+        color: white;
+        position: relative;
+        top: 25vh;
+        left: 47vw;
+    }
+    </style>
+    
+    <p>GAME OVER</p>
+    
+    <h4>No Second Tries</h4>
+    <h5>or else...</h5>
+    
+    <script>
+       let bkrdMusic = new Audio()
+       bkrdMusic.src = "../assets/music/Game Over Music.mp3" 
+       bkrdMusic.play();
+    </script>
+</body>
+</html>
