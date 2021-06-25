@@ -1,9 +1,38 @@
 let slasheff = new Audio()
 slasheff.src="../Assets/music/physical attack.mp3"
+let warriorDef = new Audio()
+warriorDef.src="../Assets/music/Warrior Defense.mp3"
+let warriorSpell = new Audio()
+warriorSpell.src="../Assets/music/Warrior Spell.mp3"
+
 
 let fightMusic = new Audio()
 fightMusic.src = "" 
 let Musicplay = false
+
+// Attack sounds
+let bossAtack = new Audio()
+bossAtack.src = "../assets/music/Boss Attack (mp3cut.net).mp3";
+
+let dragonAtack = new Audio()
+dragonAtack.src = "../assets/music/Dragon Attack.mp3";
+
+let lichAtack = new Audio()
+lichAtack.src = "../assets/music/Lich attack.mp3"
+
+// Spell sounds
+let bossSpell = new Audio()
+bossSpell.src = '../assets/music/Boss Spell.mp3'
+
+let dragonSpell = new Audio()
+dragonSpell.src = '../assets/music/Dragon Spell.mp3'
+
+let lichSpell = new Audio()
+lichSpell.src = '../assets/music/Lich Spell (mp3cut.net).mp3'
+
+
+
+
 
 //PLACE INSIDE OF A FUNCTION
 // if(!Musicplay){
@@ -71,6 +100,15 @@ class Warrior extends Character {
       }
       if (this.health > 0) {
         let warr = this;
+
+        if (enemy.name === 'Final Boss') {
+          setTimeout(function() { bossAtack.play();},3000);
+        } else if (enemy.name === 'Dragon') {
+          setTimeout(function() { dragonAtack.play();},3000);
+        } else {
+          setTimeout(function() { lichAtack.play();},3000);
+        }
+
          setTimeout(function() { document.querySelector('p').innerText = `${warr.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${warr.health}`;},3000) 
         
           return `${this.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${this.health}`;
@@ -131,6 +169,7 @@ class FinalBoss extends Character {
       }
   };
   defense = (round) => {
+      bossSpell.play();
       if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 2){
           this.defenseCooldownCounter = round + this.defenseCooldown;
           this.defenseUsed = true;
@@ -177,7 +216,7 @@ class Dragon extends Character {
 };
 
 defense = (round) => {
-    
+      setTimeout(function() {dragonSpell.play()},3000);
       if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 2){
           this.defenseCooldownCounter = round + this.defenseCooldown;
           this.defenseUsed = true;
@@ -229,6 +268,7 @@ class Lich extends Character {
       }
   };
   defense = (round) => {
+    lichSpell.play();
     if (this.defenseCooldownCounter <= round || this.defenseCooldownCounter == 2){
         this.defenseCooldownCounter = round + this.defenseCooldown;
         this.health += 10;
@@ -254,8 +294,11 @@ function fight (hero,enemy) {
         doFight(event)   
         if (li.innerText === 'ATTACK'){
           slasheff.play()
-  
-      } 
+      } else if (li.innerText === 'SPELL') {
+          warriorSpell.play()
+      } else if (li.innerText === 'DEFENSE') {
+          warriorDef.play()
+      }
       })
     }  
     );
