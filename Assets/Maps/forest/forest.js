@@ -178,9 +178,6 @@ class Character {
 // INSTANCES OF CLASSES
  let newWarrior = new Character('Warrior', character, 0, 0, ((defaultPos / 32) % tileSize) * 32, defaultPos / 32 * tileSize, 0, 0, tileSize *1.5, tileSize * 1.5);
  
-let bkrdMusic = new Audio()
-bkrdMusic.src = "Game Music.mp3" 
- let Musicplay = false
 
 function animate() {
    requestAnimationFrame(animate);
@@ -193,11 +190,6 @@ function animate() {
  
  window.onkeydown = function (e) {
   
-  if(!Musicplay){
-    console.log(Musicplay)
-    bkrdMusic.play()
-    Musicplay = true;
-  }
    // MOVEMENT OF THE MAIN CHARACTER
    if (e.key === "ArrowLeft") {
      if (layerOneMap[currentPos - 1] === 182 || layerOneMap[currentPos - 1] === 183) {
@@ -230,13 +222,8 @@ function animate() {
       }
       // console.log(layerOneMap[currentPos - 32])
    }
-<<<<<<< HEAD
    if (layerOneMap[currentPos - 32] === 181) {
      console.log[currentPos + 32]
     window.location.href = "../../../battle/battle.html";
-=======
-   if (currentPos === 146  || currentPos === 147) {
-    window.location.replace("../../../battle/battle.html");
->>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
    }
  };
