@@ -120,7 +120,7 @@ class Character {
   }
 }
 
-let defaultPos = 1007 ;
+let defaultPos = 977 ;
 
 
 let currentPos = defaultPos;
@@ -152,23 +152,23 @@ window.onload = animate;
 window.onkeydown = function (e) {
 
   // MOVEMENT OF THE MAIN CHARACTER
-  if (e.key === "ArrowLeft") {
-    if (layerOneMap[currentPos - 1] === 61) {
-      newWarrior.img = characterLeft;
-      currentPos -= 1;
+  // if (e.key === "ArrowLeft") {
+  //   if (layerOneMap[currentPos - 1] === 61) {
+  //     newWarrior.img = characterLeft;
+  //     currentPos -= 1;
   
-     }
-     console.log(layerOneMap[currentPos + 1])
-  }
-  if (e.key === "ArrowRight") {
-    if (layerOneMap[currentPos + 1] === 61) {
-      newWarrior.img = characterRight;
-      //newWarrior.x += 16;
-      currentPos += 1;
+  //    }
+  //    console.log(layerOneMap[currentPos + 1])
+  // }
+  // if (e.key === "ArrowRight") {
+  //   if (layerOneMap[currentPos + 1] === 61) {
+  //     newWarrior.img = characterRight;
+  //     //newWarrior.x += 16;
+  //     currentPos += 1;
       
-     }
-     console.log(layerOneMap[currentPos - 1])
-  }
+  //    }
+  //    console.log(layerOneMap[currentPos - 1])
+  // }
   if (e.key === "ArrowUp") {
     if (layerOneMap[currentPos - 32] === 61) {
       newWarrior.img = character;
@@ -184,7 +184,7 @@ window.onkeydown = function (e) {
      }
     
   }
-  if (currentPos >= 483 + 32 && currentPos <= 508 + 32 ){
+  if (currentPos >= 771 && currentPos <= 796 ){
     window.location.replace("../../../battle/battle3.html");
    }
 };
