@@ -13,7 +13,7 @@ window.onkeydown = function (e) {
         document.querySelector('.content').innerHTML = "<p>A long time ago, in a land about a 32 pixels away...</p>"; 
        }
       if (counter === 2) {
-       document.querySelector('.content').innerHTML = "<p>Or was it 16-pixels? Maybe </p>"; 
+       document.querySelector('.content').innerHTML = "<p>Or was it 16-pixels?</p>"; 
       }
       if (counter === 3) {
         document.querySelector('.content').innerHTML = "<p>Doesn't matter, anyway, there was a noble Warrior who heard word of a village seeking protection from monsters</p>"; 
