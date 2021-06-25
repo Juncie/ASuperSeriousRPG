@@ -113,7 +113,7 @@ class FinalBoss extends Character {
       } else {
         let boss = this;
         document.querySelector('.bar2').style.width =  "0px"; 
-        setTimeout(function() { document.querySelector('p').innerText = `${this.name} has died in act of combat.`;},3000);
+        setTimeout(function() { document.querySelector('p').innerText = `Boss has died in act of combat.`;},3000);
         setTimeout(function() { window.location.replace("../ending/ending.html"); }, 6000);
         return `${boss.name} has died in act of combat.`;
       }
