@@ -35,6 +35,7 @@ class Character {
 
 
 class Warrior extends Character {
+<<<<<<< HEAD
   physicalAttack = (enemy) => {
     if(!slasheff){
       console.log(slasheff)
@@ -46,6 +47,9 @@ class Warrior extends Character {
     
 
   }
+=======
+
+>>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
   receiveDamage = (enemy, damage) => {
 
       if (this.defenseUsed === true){
@@ -53,7 +57,7 @@ class Warrior extends Character {
           console.log(`Original damage ${damage} - Reduced Damage ${damage/2}`)
           damage = damage / 2
           this.health -= damage;
-          if (this.health <= 40) {
+          if (this.health <= 28) {
             document.querySelector('.bar').style.backgroundColor = "red";
             setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
           } else {
@@ -63,7 +67,7 @@ class Warrior extends Character {
       } else {
             let warrior = this;
             this.health -= damage;
-            if (this.health <= 40) {
+            if (this.health <= 28) {
                 document.querySelector('.bar').style.backgroundColor = "red";
                 setTimeout(function() { document.querySelector('.bar').style.width = warrior.health  * 2 + "px";},3000) 
               } else {
@@ -78,9 +82,15 @@ class Warrior extends Character {
       } else {        
         
         setTimeout(function() { document.querySelector('.bar').style.width = "0px";},3000) 
+<<<<<<< HEAD
         setTimeout(function() {document.querySelector('p').innerText = `${warr.name} died in act of combat.`},1000)
         setTimeout(function() { window.location.replace("Game Over.html"); }, 4000);
         return `${this.name} has been slain!.`;
+=======
+        document.querySelector('p').innerText = `You died in act of combat.`
+        setTimeout(function() { window.location.replace("../ending/gameOver.html"); }, 6000);
+        return `${this.name} has died in act of combat.`;
+>>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
       }
   };
   defense = (round) => {
@@ -99,7 +109,7 @@ class FinalBoss extends Character {
       console.log('Siphon Soul')
   }
   receiveDamage = (enemy, damage) => {
-    if (this.health <= 10) {
+    if (this.health <= 16) {
         document.querySelector('.bar2').style.backgroundColor = "red";
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
       } else {
@@ -123,9 +133,17 @@ class FinalBoss extends Character {
         document.querySelector('p').innerText = `${this.name} received ${damage} point(s) of damage from ${enemy.name}. He now a health of ${this.health}`;
         return `${this.name} received ${damage} point(s) of damage from ${enemy.name}. He now a health of ${this.health}`;
       } else {
+        dead();
+        let boss = this;
         document.querySelector('.bar2').style.width =  "0px"; 
+<<<<<<< HEAD
         document.querySelector('p').innerText = `${this.name} died in act of combat.`;
         return `${this.name} died in act of combat.`;
+=======
+        setTimeout(function() { document.querySelector('p').innerText = `Boss has died in act of combat.`;},3000);
+        setTimeout(function() { window.location.replace("../ending/ending.html"); }, 6000);
+        return `${boss.name} has died in act of combat.`;
+>>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
       }
   };
   defense = (round) => {
@@ -144,7 +162,7 @@ class Dragon extends Character {
   }
 
   receiveDamage = (enemy, damage) => {
-    if (this.health <= 10) {
+    if (this.health <= 12) {
         document.querySelector('.bar2').style.backgroundColor = "red";
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
       } else {
@@ -165,6 +183,7 @@ class Dragon extends Character {
       document.querySelector('p').innerText =`${this.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${this.health}`
       return `${this.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${this.health}`;
     } else {
+      dead();
       document.querySelector('.bar2').style.width =  "0px"; 
       let dragon = this;                                        
       setTimeout(function() { document.querySelector('p').innerText = `${dragon.name} died in act of combat.`},3000);
@@ -211,12 +230,13 @@ class Lich extends Character {
       }
       if (damage > 0){
         hurt();
-    }
+      } 
       if (this.health > 0) {
         document.querySelector('.bar2').style.width = this.health * 2 + "px";
         document.querySelector('p').innerText =`${this.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${this.health}`
         return `${this.name} received ${damage} point(s) of damage from ${enemy.name}. Now he a health of ${this.health}`;
       } else {
+        dead();
         document.querySelector('.bar2').style.width =  "0px"; 
         let lich = this;
         setTimeout(function() { document.querySelector('p').innerText = `${lich.name} died in act of combat.`},1000);
@@ -237,11 +257,18 @@ class Lich extends Character {
 }
 
 
-let warrior = new Warrior('Warrior', 14, 10, 150, 2, 2);
-let finalBoss = new FinalBoss('Final Boss', 6000000, 14, 100, 3, 2);
+<<<<<<< HEAD
+let warrior = new Warrior('Warrior', 13, 10, 140, 2, 2);
+let finalBoss = new FinalBoss('Final Boss', 25, 14, 100, 3, 2);
 let lich = new Lich('lich', 11, 15, 70, 1, 3);
 let dragon = new Dragon('Dragon', 14, 10, 80, 2, 2);
 
+=======
+let warrior = new Warrior('Warrior', 12, 6, 140, 2, 2);
+let finalBoss = new FinalBoss('Final Boss', 25, 14, 80, 3, 2);
+let lich = new Lich('lich', 12, 5, 50, 1, 3);
+let dragon = new Dragon('Dragon', 9, 10, 60, 2, 2);
+>>>>>>> 5c33dfd133bd75a668fd4ebc4ddcb5fffc3ea473
 function fight (hero,enemy) {
 
   let round = 0;
@@ -358,3 +385,7 @@ function hurt(){
     let interval = setInterval(fade,100);
     setTimeout(function(){clearInterval(interval);document.getElementById('villain').style.opacity=1},3000);
 }
+
+  function dead() {
+   document.getElementById('villain').style.display = 'none';
+  }
