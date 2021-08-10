@@ -25,7 +25,7 @@ window.onkeydown = function (e) {
         document.querySelector('.content').innerHTML = "<p>But little did he know...</p>"; 
       }
       if (counter === 6) {
-        window.location.href = "../Assets/Maps/forest/forest.html";
+        window.location.href = "/forest.html";
       }
     }
 }
