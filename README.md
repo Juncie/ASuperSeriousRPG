@@ -1,1 +1,1 @@
-# battle-game
+Ironhack Student Project titled: A Super Serious RPG
